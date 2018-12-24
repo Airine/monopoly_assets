@@ -34,11 +34,11 @@ class Halls(KBEngine.Entity):
         pass
 
     def joinRoom(self, entityCall, roomId):
-        INFO_MSG('Trying to join a private room[{}]'.format(roomId))
+        DEBUG_MSG('Trying to join a private room[{}]'.format(roomId))
         for i in list(self.allRoomEntityList):
-            INFO_MSG('room:{}'.format(i))
+            DEBUG_MSG('room:{}'.format(i))
         if roomId not in list(self.allRoomEntityList):
-            INFO_MSG('room {} not exsit'.format(roomId))
+            DEBUG_MSG('room {} not exsit'.format(roomId))
             return
         self.allRoomEntityList[roomId].enterRoom(entityCall)
         entityCall.client.onEnterPrivateRoomSuccess(roomId)

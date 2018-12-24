@@ -5,7 +5,6 @@
 */.idea/*
 */.vs/*
 *.pyc
-*/.idea/*
 scripts/cell/player/.idea/encodings.xml
 scripts/cell/player/.idea/misc.xml
 scripts/cell/player/.idea/modules.xml
