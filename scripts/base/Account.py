@@ -133,7 +133,8 @@ class Account(KBEngine.Proxy):
         KBEngine.globalData["Halls"].joinRoom(self, int(room_id))
 
     def SiteEvent(self, room_id, site_id):
-        KBEngine.globalData["Halls"].getRoom(int(room_id)).event(self, site_id)
+        # KBEngine.globalData["Halls"].getRoom(int(room_id)).event(self, site_id)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()
 
     def Shake(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()

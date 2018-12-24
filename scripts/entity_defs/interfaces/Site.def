@@ -26,9 +26,7 @@
 
 	<CellMethods>
 		<!--玩家进入站点和离开站点-->
-		<enter_site>
-			<Arg> ENTITYCALL </Arg>
-		</enter_site>
+	
 		<leave_site>
 			<Arg> ENTITY_ID </Arg>
 		</leave_site>

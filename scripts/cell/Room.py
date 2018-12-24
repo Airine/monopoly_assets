@@ -3,8 +3,7 @@ from player.CsPlayer import CsPlayer
 from player.PlayerFactory import PlayerFactory
 from KBEDebug import *
 
-TIMER_HAS_NO_OP_CB = 1
-
+MAIN_TIMER = 1
 
 class Room(KBEngine.Entity):
     def __init__(self):
@@ -91,7 +90,7 @@ class Room(KBEngine.Entity):
                 self.one_timer()
             else:
                 self.game.seatInfo[self.game.curr_player_id].entity.cell.start_turn()
-                self.addTimer(30)
+                self.addTimer(30,0,MAIN_TIMER)
 
     # 由客户端调用？
     def shake(self):
@@ -112,7 +111,7 @@ class Room(KBEngine.Entity):
         self.next()
 
     def next(self):
-        self.delTime(1)
+        self.delTimer(MAIN_TIMER)
         if not self.game.dice.repeat:
             self.game.next_player()
         self.one_timer()

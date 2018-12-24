@@ -3,9 +3,9 @@ from KBEDebug import *
 import Functor
 import random
 
-ROOM_MAX_PLAYER = 2
+ROOM_MAX_PLAYER = 1
 FEN_PEI_TIMER = 1
-
+CREATE_ROOM_TIMER = 3
 
 class Halls(KBEngine.Entity):
     def __init__(self):
@@ -13,6 +13,7 @@ class Halls(KBEngine.Entity):
         KBEngine.globalData["Halls"] = self
         self.waitingEnterPlayerEntitys = []
         self.fen_pei_timer = 0
+        self.create_timer = 0
         self.NeedPlayerRoomEntity = {}
         self.allRoomEntityList = {}
 
@@ -30,8 +31,19 @@ class Halls(KBEngine.Entity):
         # entity_list.append(entityCall)
         room_id = self._creatRoomEntity(entity_list)
         # entityCall.client.onEnterPrivateRoomSuccess(room_id)
-        self.allRoomEntityList[room_id].enterRoom(entityCall)
-        pass
+        # self.allRoomEntityList[room_id].enterRoom(entityCall)
+        self.created = room_id
+        self.creating_entity = entityCall
+        if self.create_timer == 0:
+            self.create_timer = self.addTimer(0, 0.5, CREATE_ROOM_TIMER)
+
+    def join_created(self):
+        room_id = self.created
+        if room_id not in list(self.allRoomEntityList):
+            return
+        else:
+            self.delTimer(self.create_timer)
+            self.allRoomEntityList[room_id].enterRoom(self.creating_entity)
 
     def joinRoom(self, entityCall, roomId):
         DEBUG_MSG('Trying to join a private room[{}]'.format(roomId))
@@ -134,7 +146,8 @@ class Halls(KBEngine.Entity):
     def onTimer(self, timerHandle, userData):
         if userData == FEN_PEI_TIMER:
             self.fen_pei()
-
+        if userData == CREATE_ROOM_TIMER:
+            self.join_created()
 
     # 房间通知大厅，需要玩家来填满
     def roomNeedPlayer(self, entityCall, roomId):
