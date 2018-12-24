@@ -1,0 +1,13 @@
+
+*.vs/*
+*.log
+*.log.*
+*/.idea/*
+*/.vs/*
+*.pyc
+*/.idea/*
+scripts/cell/player/.idea/encodings.xml
+scripts/cell/player/.idea/misc.xml
+scripts/cell/player/.idea/modules.xml
+scripts/cell/player/.idea/player.iml
+scripts/cell/player/.idea/workspace.xml

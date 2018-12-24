@@ -1,0 +1,19 @@
+<root>
+	<Interfaces>
+		<Interface> Site </Interface>
+	</Interfaces>
+	<Properties>
+	</Properties>
+
+	<ClientMethods>
+	    <show_get_rest></show_get_rest>
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+		
+	</CellMethods>
+
+</root>

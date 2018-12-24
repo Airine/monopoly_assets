@@ -1,0 +1,38 @@
+<root>
+	<Properties>		
+	</Properties>
+
+	<ClientMethods>		
+	</ClientMethods>
+
+	<BaseMethods>
+		<EnterMatchesMatch>
+			<Arg>		ENTITYCALL		</Arg>
+		</EnterMatchesMatch>
+		<CreatePrivateRoom>
+			<Arg>		ENTITYCALL		</Arg>
+		</CreatePrivateRoom>
+		<joinRoom>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		UINT32		</Arg>
+		</joinRoom>
+		<roomNeedPlayer>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		SPACE_KEY		</Arg>
+		</roomNeedPlayer>
+		<roomIsFull>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		SPACE_KEY		</Arg>
+		</roomIsFull>
+		<!-- 换房间请求 玩家 当前所在的房间 -->
+		<changeRoom>
+			<Arg>		ENTITYCALL		</Arg>
+			<Arg>		SPACE_KEY		</Arg>
+		</changeRoom>
+		
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+</root>

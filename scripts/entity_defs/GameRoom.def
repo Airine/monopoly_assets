@@ -1,0 +1,22 @@
+<root>
+	<Interfaces>
+		<Interface> Site </Interface>
+		<Interface> Building </Interface>
+	</Interfaces>
+
+	<Properties>
+	</Properties>
+
+	<ClientMethods>
+		<confirm_pay>
+			<Arg> INT32 </Arg>
+		</confirm_pay>
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+</root>

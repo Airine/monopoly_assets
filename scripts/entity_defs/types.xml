@@ -1,0 +1,120 @@
+<root>
+	<SPACE_KEY>				UINT64		</SPACE_KEY>
+	<ENTITY_ID>				UINT32		</ENTITY_ID>
+	<BOOL>				UINT8		</BOOL>
+	<MJPAI>INT8	</MJPAI>
+	<MJ_LIST>
+		ARRAY<of>MJPAI</of>
+	</MJ_LIST>
+	<ENTITY_LIST>
+		ARRAY<of>ENTITYCALL</of>
+	</ENTITY_LIST>
+  <LOCATION_ID>       UINT32       </LOCATION_ID>
+  <LEVEL>             UINT32       </LEVEL>
+	<PLAYER_PUBLIC_INFO>
+		FIXED_DICT
+		<Properties>
+			<userId>
+				<Type>	ENTITY_ID	</Type>
+			</userId>
+			<folds>
+				<Type>	MJ_LIST	</Type>
+			</folds>
+			<angangs>
+				<Type>	MJ_LIST	</Type>
+			</angangs>
+			<diangangs>
+				<Type>	MJ_LIST	</Type>
+			</diangangs>
+			<wangangs>
+				<Type>	MJ_LIST	</Type>
+			</wangangs>
+			<pengs>
+				<Type>	MJ_LIST	</Type>
+			</pengs>
+			<hus>
+				<Type>	MJ_LIST	</Type>
+			</hus>
+			<que>
+				<Type>	MJPAI	</Type>
+			</que>
+			<holdsCount>
+				<Type>	MJPAI	</Type>
+			</holdsCount>
+		</Properties>
+	</PLAYER_PUBLIC_INFO>
+	
+	<PLAYERINFO_LIST>
+		ARRAY<of>PLAYER_PUBLIC_INFO</of>
+	</PLAYERINFO_LIST>
+	
+	<ROOM_PUBLIC_INFO>
+		FIXED_DICT
+		<Properties>
+			<RoomType>
+				<Type> UINT8 </Type>
+			</RoomType>
+			<playerMaxCount>
+				<Type> UINT8 </Type>
+			</playerMaxCount>
+			<state>
+				<Type>	UNICODE	</Type>
+			</state>
+			<turn>
+				<Type>	INT8	</Type>
+			</turn>
+			<numOfMJ>
+				<Type>	UINT8	</Type>
+			</numOfMJ>
+			<button>
+				<Type>	INT8	</Type>
+			</button>
+			<playerInfo>
+				<Type>	PLAYERINFO_LIST	</Type>
+			</playerInfo>
+			<chuPai>
+				<Type>	INT8	</Type>
+			</chuPai>
+		</Properties>
+	</ROOM_PUBLIC_INFO>
+
+	<PLAYER_ACTION_DIC>
+		FIXED_DICT
+		<Properties>
+			<pai>
+				<Type>	MJPAI	</Type>
+			</pai>
+			<hu>
+				<Type>	BOOL	</Type>
+			</hu>
+			<peng>
+				<Type>	BOOL	</Type>
+			</peng>
+			<gang>
+				<Type>	BOOL	</Type>
+			</gang>
+			<gangpai>
+				<Type>	MJ_LIST	</Type>
+			</gangpai>
+		</Properties>
+	</PLAYER_ACTION_DIC>
+	
+	<TING_PAI_DIC>
+		FIXED_DICT
+		<Properties>
+			<nousepai>
+				<Type>	UNICODE	</Type>
+			</nousepai>
+			<pai>
+				<Type>	UNICODE	</Type>
+			</pai>
+			<fan>
+				<Type>	UNICODE	</Type>
+			</fan>
+		</Properties>
+	</TING_PAI_DIC>
+	<TING_PAI_LIST>
+		ARRAY<of>TING_PAI_DIC</of>
+	</TING_PAI_LIST>
+	
+</root>

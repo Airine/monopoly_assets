@@ -1,0 +1,22 @@
+<root>
+	<Properties>
+		<playerName>
+			<Type>	UNICODE					</Type>
+			<Flags>	BASE					</Flags>
+			<Persistent>	true						</Persistent>
+			<Index> 	UNIQUE 					</Index>
+			<Default>						</Default>
+		</playerName>
+		
+	</Properties>
+
+	<ClientMethods>		
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+</root>

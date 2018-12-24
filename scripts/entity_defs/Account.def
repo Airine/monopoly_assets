@@ -1,0 +1,193 @@
+<root>
+	<Properties>
+		<playerName_base>
+			<Type>	UNICODE					</Type>
+			<Flags>	BASE_AND_CLIENT					</Flags>
+			<Persistent>	true						</Persistent>
+		</playerName_base>
+		<playerID_base>
+			<Type>	UINT16					</Type>
+			<Flags>	BASE_AND_CLIENT					</Flags>
+			<Persistent>	true						</Persistent>
+		</playerID_base>
+		<playerName>
+			<Type>	UNICODE					</Type>
+			<Flags>	ALL_CLIENTS					</Flags>
+			<Persistent>	true						</Persistent>
+		</playerName>
+		<playerID>
+			<Type>	UINT16					</Type>
+			<Flags>	ALL_CLIENTS					</Flags>
+			<Persistent>	true						</Persistent>
+		</playerID>
+		<isNewPlayer>
+			<Type>		UINT8			</Type>
+			<Flags>		BASE_AND_CLIENT				</Flags>
+			<Persistent>		true				</Persistent>
+			<Default>		1				</Default>
+		</isNewPlayer>
+		<roomSeatIndex>
+			<Type>	UINT8				</Type>
+			<Flags>	ALL_CLIENTS			</Flags>
+		</roomSeatIndex>
+
+		<isReady>
+			<Type>	BOOL				</Type>
+			<Flags>	ALL_CLIENTS			</Flags>
+		</isReady>
+		<holds>
+			<Type>	MJ_LIST				</Type>
+			<Flags>	OWN_CLIENT			</Flags>
+		</holds>
+		<actionData>
+			<Type>	PLAYER_ACTION_DIC				</Type>
+			<Flags>	OWN_CLIENT	</Flags>
+		</actionData>
+
+	</Properties>
+
+	<ClientMethods>
+		<OnReqCreateAvatar>
+			<Arg>	UINT8	</Arg>
+		</OnReqCreateAvatar>
+    
+		<playerLevelRoom>
+		</playerLevelRoom>
+
+		<onGetRoomInfo>
+			<Arg>	ROOM_PUBLIC_INFO	</Arg>
+		</onGetRoomInfo>
+
+		<upDataClientRoomInfo>
+			<Arg>	ROOM_PUBLIC_INFO	</Arg>
+		</upDataClientRoomInfo>
+
+    <onEnterPrivateRoomSuccess>
+      <Arg>	UINT32	</Arg>
+    </onEnterPrivateRoomSuccess>
+    <!--下面开始是主逻辑相关的-->
+
+    <startGame>
+      
+    </startGame>
+
+    <endGame>
+      
+    </endGame>
+    
+    <startTurn>
+
+    </startTurn>
+
+    <otherStartTurn>
+      <!--other player id-->
+      <Arg> UINT16 </Arg>
+    </otherStartTurn>
+
+    <normalChoose>
+      
+    </normalChoose>
+    
+    <otherNormalChoose>
+      <!--other player id-->
+      <Arg> UINT16 </Arg>
+    </otherNormalChoose>
+
+    <timeOut>
+      
+    </timeOut>
+    
+    <otherTimeOut>
+      <!--other player id-->
+      <Arg> UINT16 </Arg>
+    </otherTimeOut>
+    
+    <move>
+      <Arg> UINT8 </Arg>
+    </move>
+
+    <otherPlayerMove>
+      <!--other player id-->
+      <Arg> UINT16 </Arg>
+      <!--steps-->
+      <Arg> UINT8  </Arg>
+    </otherPlayerMove>
+    
+  </ClientMethods>
+
+	<BaseMethods>
+		<reqCreateAvatar>
+			<Exposed/>
+			<Arg>	UNICODE	</Arg>
+		</reqCreateAvatar>
+
+		<onLeaveRoom>
+		</onLeaveRoom>
+
+		<EnterMatchesMatch>
+			<Exposed/>
+		</EnterMatchesMatch>
+
+    <CreatePrivateRoom>
+      <Exposed/>
+    </CreatePrivateRoom>
+
+    <EnterPrivateRoom>
+      <Arg> UNICODE </Arg>
+      <Exposed/>
+    </EnterPrivateRoom>
+
+    <SiteEvent>
+      <Arg> UNICODE</Arg>
+      <Arg> ENTITY_ID</Arg>
+      <Exposed/>
+    </SiteEvent>
+    
+		<createCell>
+			<Arg>		ENTITYCALL					</Arg>
+		</createCell>
+
+		<reqChangeRoom>
+			<Exposed/>
+		</reqChangeRoom>
+		<enterRoomSuccess>
+			<Arg>	SPACE_KEY	</Arg>
+		</enterRoomSuccess>
+		<OnTeleport>
+			<Arg>		ENTITYCALL					</Arg>
+		</OnTeleport>
+		<changeRoomSeatIndex>
+			<Arg>		UINT8		</Arg>
+			<!-- 座位号 -->
+		</changeRoomSeatIndex>
+
+  </BaseMethods>
+
+	<CellMethods>
+		<LeaveRoom>
+			<Exposed/>
+		</LeaveRoom>
+		<changeRoomSeatIndex>
+			<Arg>		UINT8		</Arg>
+			<!-- 座位号 -->
+		</changeRoomSeatIndex>
+		
+		<playerReadyStateChange>
+			<Arg>		BOOL		</Arg>
+		</playerReadyStateChange>
+    
+    <move_notify>
+      <Arg> UINT8 </Arg>
+    </move_notify>
+
+    <start_game></start_game>
+    
+    <end_game></end_game>
+
+    <start_turn></start_turn>
+
+    <normal_choose></normal_choose>
+		
+	</CellMethods>
+
+</root>

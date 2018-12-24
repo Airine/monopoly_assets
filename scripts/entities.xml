@@ -1,0 +1,29 @@
+<root>
+	<!--
+		实体注册文件(<你的资产库>/scripts/entities.xml)
+		详细说明请参考：http://kbengine.org/cn/docs/configuration/entities.html
+					http://www.kbengine.org/cn/docs/programming/entitydef.html
+	-->
+
+	<!-- <Avatar/> -->
+	<Account hasClient="true"></Account><!-- <Account hasCell="true" hasBase="true" hasClient="true"></Account> -->
+	<CheckName/>
+	<Halls/>
+	<Room hasClient="true"></Room>
+  <!--<Site hasClient="true"></Site>-->
+  <!--<Building hasClient="true"></Building>-->
+  <BusStation hasClient="true"></BusStation>
+  <AdminBuilding hasClient="true"></AdminBuilding>
+  <BuildingOne hasClient="true"></BuildingOne>
+  <Canteen hasClient="true"></Canteen>
+  <GameRoom hasClient="true"></GameRoom>
+  <Hospital hasClient="true"></Hospital>
+  <Hotel hasClient="true"></Hotel>
+  <Lakeside hasClient="true"></Lakeside>
+  <Library hasClient="true"></Library>
+  <Lychee hasClient="true"></Lychee>
+  <Stadium hasClient="true"></Stadium>
+  <StudyRoom hasClient="true"></StudyRoom>
+  <Supply hasClient="true"></Supply>
+
+</root>

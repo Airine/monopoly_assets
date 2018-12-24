@@ -1,0 +1,20 @@
+<root>
+	<Interfaces>
+		<Interface> Site </Interface>
+		<Interface> Building </Interface>
+	</Interfaces>
+
+	<Properties>
+	</Properties>
+
+	<ClientMethods>
+
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+
+</root>

@@ -1,0 +1,20 @@
+<root>
+	<Interfaces>
+		<Interface> Site </Interface>
+	</Interfaces>
+	<Properties>
+	</Properties>
+
+	<ClientMethods>
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+		<move_player>
+      <Arg>UINT8</Arg>
+    </move_player>
+  </CellMethods>
+
+</root>

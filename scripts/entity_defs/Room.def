@@ -1,0 +1,72 @@
+<root>
+	<Properties>
+		<roomKey>
+			<Type>			SPACE_KEY			</Type>
+			<Flags>			ALL_CLIENTS				</Flags>
+		</roomKey>
+		<RoomType>
+			<Type>			UINT8			</Type>
+			<Flags>			ALL_CLIENTS				</Flags>
+		</RoomType>
+		<EnterPlayerList>
+			<Type>			ENTITY_LIST			</Type>
+			<Flags>			BASE				</Flags>
+		</EnterPlayerList>
+		<playerMaxCount>
+			<Type>			UINT8			</Type>
+			<Flags>			ALL_CLIENTS			</Flags>
+		</playerMaxCount>
+		<!-- 还剩多少张麻将 -->
+		<public_roomInfo>
+			<Type>			ROOM_PUBLIC_INFO			</Type>
+			<Flags>			ALL_CLIENTS			</Flags>
+		</public_roomInfo>
+		<!-- 当前出牌玩家的索引 -->
+		<cur_turn>
+			<Type>			UINT8			</Type>
+			<Flags>			ALL_CLIENTS			</Flags>
+		</cur_turn>
+		
+	</Properties>
+
+	<ClientMethods>		
+	</ClientMethods>
+
+	<BaseMethods>
+		<NeedPlayersCount>
+		</NeedPlayersCount>
+		<enterRoom>
+			<Arg>		ENTITYCALL		</Arg>
+		</enterRoom>
+		<leaveRoom>
+			<Arg>		ENTITY_ID		</Arg>
+		</leaveRoom>
+		<CanEnterRoom>
+			<Arg>		ENTITYCALL		</Arg>
+		</CanEnterRoom>
+
+		<changeRoomSuccess>
+			<Arg>		ENTITYCALL		</Arg>
+		</changeRoomSuccess>
+
+	</BaseMethods>
+
+	<CellMethods>
+		<enterRoom>
+			<Arg>		ENTITYCALL		</Arg>
+		</enterRoom>
+		<changeRoomSuccess>
+			<Arg>		ENTITY_ID		</Arg>
+		</changeRoomSuccess>
+
+		<reqGetRoomInfo>
+			<Exposed/>
+		</reqGetRoomInfo>
+
+		<reqChangeReadyState>
+			<Exposed/>
+			<Arg>		BOOL				</Arg>
+		</reqChangeReadyState>
+	</CellMethods>
+
+</root>

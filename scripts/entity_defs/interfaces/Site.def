@@ -1,0 +1,40 @@
+<root>
+  <Properties>
+    <name>
+      <Type> UNICODE </Type>
+      <Flags> ALL_CLIENTS </Flags>
+    </name>
+    <room_id>
+      <Type> INT32 </Type>
+      <Flags> ALL_CLIENTS </Flags>
+    </room_id>
+    <location>
+      <Type> LOCATION_ID </Type>
+      <Flags> ALL_CLIENTS </Flags>
+    </location>
+    <curr_player>
+      <Type> ENTITYCALL </Type>
+      <Flags> ALL_CLIENTS </Flags>
+    </curr_player>
+  </Properties>
+
+	<ClientMethods>
+	</ClientMethods>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+		<!--玩家进入站点和离开站点-->
+		<enter_site>
+			<Arg> ENTITYCALL </Arg>
+		</enter_site>
+		<leave_site>
+			<Arg> ENTITY_ID </Arg>
+		</leave_site>
+		<!--玩家进入站点触发事件, 只触发对应客户端事件，待玩家做出选择后再发生改变-->
+		<site_event>
+		</site_event>
+	</CellMethods>
+
+</root>
