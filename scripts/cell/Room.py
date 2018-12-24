@@ -73,7 +73,7 @@ class Room(KBEngine.Entity):
     def begin(self):
         self.game = GameController(self.roomInfo, self.playerMaxCount)  # 创建控制器
         self.game.state = "playing"
-        self.room_master.cell.start_game()
+        self.game.seatInfo[0].entity.cell.start_game()
         self.timer_id = self.one_timer()
 
     def one_timer(self):

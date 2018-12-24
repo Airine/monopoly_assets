@@ -13,7 +13,7 @@ class BusStation(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 调用客户端移动提示选择要移动到哪个位置 """
-        self.curr_player.entity.cell.select_position_to_move()
+        self.curr_player.seat.entity.cell.select_position_to_move()
 
     def move_player(self, steps):
         """客户端调用的时候要告诉我走了几步到的哪里"""
