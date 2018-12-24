@@ -130,8 +130,6 @@ class Account(KBEngine.Proxy):
         if self.MainState != MAIN_STATE_IDEL:
             return
         self.MainState = MAIN_STATE_INGAME
-        INFO_MSG(type(room_id))
-        INFO_MSG(room_id)
         KBEngine.globalData["Halls"].joinRoom(self, int(room_id))
 
     def SiteEvent(self, room_id, site_id):
