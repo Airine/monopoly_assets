@@ -137,11 +137,17 @@
       <Exposed/>
     </EnterPrivateRoom>
 
+    <ShakeDice>
+      <Exposed/>
+    </ShakeDice>
+    
+    <!--
     <SiteEvent>
       <Arg> UNICODE</Arg>
       <Arg> ENTITY_ID</Arg>
       <Exposed/>
     </SiteEvent>
+    -->
     
 		<createCell>
 			<Arg>		ENTITYCALL					</Arg>

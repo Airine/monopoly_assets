@@ -132,9 +132,5 @@ class Account(KBEngine.Proxy):
         self.MainState = MAIN_STATE_INGAME
         KBEngine.globalData["Halls"].joinRoom(self, int(room_id))
 
-    def SiteEvent(self, room_id, site_id):
-        # KBEngine.globalData["Halls"].getRoom(int(room_id)).event(self, site_id)
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()
-
-    def Shake(self):
+    def ShakeDice(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()
