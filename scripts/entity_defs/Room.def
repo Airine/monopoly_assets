@@ -1,17 +1,26 @@
 <root>
 	<Properties>
+    
 		<roomKey>
 			<Type>			SPACE_KEY			</Type>
 			<Flags>			ALL_CLIENTS				</Flags>
 		</roomKey>
+    
 		<RoomType>
 			<Type>			UINT8			</Type>
 			<Flags>			ALL_CLIENTS				</Flags>
 		</RoomType>
-		<EnterPlayerList>
-			<Type>			ENTITY_LIST			</Type>
-			<Flags>			BASE				</Flags>
-		</EnterPlayerList>
+    
+    <EnterPlayerList>
+      <Type>			ENTITY_LIST			</Type>
+      <Flags>			BASE				</Flags>
+    </EnterPlayerList>
+    
+    <site_list>
+      <Type>      ENTITY_LIST     </Type>
+      <Flags>     BASE        </Flags>
+    </site_list>
+    
 		<playerMaxCount>
 			<Type>			UINT8			</Type>
 			<Flags>			ALL_CLIENTS			</Flags>

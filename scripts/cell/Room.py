@@ -95,20 +95,22 @@ class Room(KBEngine.Entity):
     # 由客户端调用？
     def shake(self):
         d1, d2 = self.game.dice.shake()
-        seat = self.game.seatInfo[self.game.curr_player_id]
+        # seat = self.game.seatInfo[self.game.curr_player_id]
+        seat = self.roomInfo.seats[self.game.curr_player_id]
         curr_pos = seat.character.position
-        self.base.site_list[curr_pos].leave_site(seat.entity)
-        steps = d1 + d2  # seat.character.change_position(steps)
-        seat.entity.move_notify(steps)
+        # self.base.site_list[curr_pos].leave_site(seat.entity)
+        steps = d1 + d2  
+        seat.character.change_position(steps)
         curr_pos = seat.character.position
-        site = self.base.site_list[curr_pos]
+        seat.entity.cell.move_notify(steps, curr_pos)
+        # site = self.base.site_list[curr_pos]
         # if site == None:
         if True:
             seat.entity.cell.normal_choose()
         else:
-            site.enter_site(seat)
-            site.site_event()
-        self.next()
+            pass
+            # site.enter_site(seat)
+            # site.site_event()
 
     def next(self):
         self.delTimer(MAIN_TIMER)

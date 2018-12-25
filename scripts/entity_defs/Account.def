@@ -104,6 +104,8 @@
     
     <move>
       <Arg> UINT8 </Arg>
+      <Arg> UINT32 </Arg>
+
     </move>
 
     <otherPlayerMove>
@@ -111,6 +113,8 @@
       <Arg> UINT16 </Arg>
       <!--steps-->
       <Arg> UINT8  </Arg>
+      <Arg> UINT32 </Arg>
+
     </otherPlayerMove>
     
   </ClientMethods>
@@ -184,6 +188,8 @@
     
     <move_notify>
       <Arg> UINT8 </Arg>
+      <Arg> UINT32 </Arg>
+      <Exposed/>
     </move_notify>
 
     <start_game></start_game>

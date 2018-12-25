@@ -1,7 +1,6 @@
 import Functor
 from KBEDebug import *
 
-
 class Room(KBEngine.Entity):
     def __init__(self):
         KBEngine.Entity.__init__(self)
@@ -9,7 +8,6 @@ class Room(KBEngine.Entity):
         self.roomKey = self.cellData["roomKey"]
         self.MaxPlayerCount = self.cellData["playerMaxCount"]
         self.RoomType = self.cellData["RoomType"]
-        self.site_list = {}
         self._createSiteEntity(None)
 
     def event(self, seat, site_id):
@@ -17,6 +15,16 @@ class Room(KBEngine.Entity):
         self.site_list[site_id].cell.site_event()
 
     def _createSiteEntity(self, entityCall):
+        site_id = 0
+        KBEngine.createEntityAnywhere("AdminBuilding",
+                                      {
+                                          "name": "Admin Building",
+                                          "room_id": self.roomKey,
+                                          "location": site_id,
+                                          "curr_player": entityCall
+                                      },
+                                      Functor.Functor(self._createSiteCB, site_id)
+                                      )
         site_id = 1
         KBEngine.createEntityAnywhere("BusStation",
                                       {

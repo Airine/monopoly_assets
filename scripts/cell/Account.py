@@ -18,14 +18,12 @@ class Account(KBEngine.Entity):
 
     def playerReadyStateChange(self, state):
         self.isReady = state
-        print("cell account")
-        print(self.isReady)
 
-    def move_notify(self, steps):
+    def move_notify(self, steps, cur_pos):
         # self.palyer.position += steps;
         if self.client:
-            self.client.move(steps)
-        self.otherClients.otherPlayerMove(self.id, steps)
+            self.client.move(steps, cur_pos)
+        self.otherClients.otherPlayerMove(self.id, steps, cur_pos)
 
     def start_game(self):
         self.allClients.startGame()
