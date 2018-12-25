@@ -1,7 +1,7 @@
 from player.CardPackage import *
 
 SUM_BUILDING_NUM = 24  # 几个格子
-GRADUATED_REQUIREMENT = [30, 50, 70, 90] # 升级和毕业要求达到的学力点
+GRADUATED_REQUIREMENT = [30, 50, 70, 90]  # 升级和毕业要求达到的学力点
 """
 当前问题
 """
@@ -19,6 +19,7 @@ class Player:
         self.money = 3000  # 初始化金钱
         self.ability = 10  # 学历点
         self.administrative_warning = 0  # 行政警告
+        self.loop = 1  # 第几圈
         self.study_warning = 0  # 学业警告
         self.card_package = CardPackage(0, 0, 0, 0, 0)  # 道具卡
         self.house = list()  # 所拥有的房间
@@ -26,25 +27,35 @@ class Player:
         self.earn_money_rate = 1  # 收钱比率
         self.get_ability_rate = 1  # 获得学历点率
         self.money_per_round = 1000  # 每回合发的钱数
+        self.personality = Personality() # 性格点
 
     def graduate_grade(self):
         """ 升年级，或者毕业 """
-        if self.ability > GRADUATED_REQUIREMENT[self.grade]:
-            self.grade += 1
-            self.seat.entity.cell.show_graduate(self.grade)
         if self.grade > 4:
             self.graduation()
+        elif self.ability > GRADUATED_REQUIREMENT[self.grade]:
+            self.grade += 1
+            self.seat.entity.cell.show_graduate(self.grade)
+            # 不管升没升成功loop都置为0， 开始下一个循环（没升学成功其实已经没机会第一了）
+            self.loop = 0
 
     def graduation(self):
         """ 毕业操作"""
-        pass
+        self.seat.entity.cell.show_graduate(self.evaluate_graduation())
+
+    def evaluate_graduation(self):
+        """ 根据点数评估毕业去向， 并且返回结果"""
+        return "成功毕业好吧"
 
     def is_dead(self):
         """ 是否死亡 """
-        return self.administrative_warning + self.study_warning >= 3 or self.money <= 0
+        if self.administrative_warning + self.study_warning >= 3 or self.money <= 0:
+            self.seat.entity.cell.fail()
 
     def change_position(self, forward_num):
         """改变位置"""
+        if self.position + forward_num > SUM_BUILDING_NUM:
+            self.loop += 1
         self.position += forward_num
         self.position = self.position % SUM_BUILDING_NUM
 
@@ -89,3 +100,42 @@ class Player:
     def buy_house(self, money, house):
         self.pay_money(money)
         self.house.append(house)
+
+
+class Personality:
+    def __init__(self):
+        self.real_point = 0
+        self.research_point = 0
+        self.manage_point = 0
+        self.social_point = 0
+        self.art_point = 0
+
+    def add_real_point(self, num):
+        self.real_point += num
+
+    def add_research_point(self, num):
+        self.research_point += num
+
+    def add_manage_point(self, num):
+        self.manage_point += num
+
+    def add_social_point(self, num):
+        self.social_point += num
+
+    def add_art_point(self, num):
+        self.art_point += num
+
+    def sub_real_point(self, num):
+        self.real_point -= num
+
+    def sub_research_point(self, num):
+        self.research_point -= num
+
+    def sub_manage_point(self, num):
+        self.manage_point -= num
+
+    def sub_social_point(self, num):
+        self.social_point -= num
+
+    def sub_art_point(self, num):
+        self.art_point -= num

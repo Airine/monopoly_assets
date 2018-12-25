@@ -14,7 +14,7 @@ class AdminBuilding(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 经过正门的人发钱，踩到的翻倍 """
-        self.show_send_money(self.curr_player.money_per_round(2))
+        self.show_send_money(self.curr_player.money_per_round(1))
 
     def send_money(self):
         """ 只是路过的人发正常金额的钱"""
@@ -23,6 +23,7 @@ class AdminBuilding(KBEngine.Entity, Site):
     def show_send_money(self, money):
         """ 调用cell 调用客户端显示发放奖学金 """
         self.curr_player.cell.show_send_money(money)
+
 
 
 

@@ -41,9 +41,6 @@ class StudyRoom(KBEngine.Entity, Site, Building):
                 else:
                     self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, False, self.level)
 
-    def study_finish(self):
-        self.try_to_buy()
-
     def player_study(self):
         """ 不用卡学习 """
         if not self.curr_is_owner:
@@ -65,6 +62,9 @@ class StudyRoom(KBEngine.Entity, Site, Building):
         """ 如果当前玩家有交易卡，且不是主人，尝试去购买此建筑 """
         if self.curr_player.card_package.is_have_transaction() and not self.curr_is_owner:
             self.curr_player.seat.entity.cell.show_weather_to_buy(self.owner, 'StudyRoom')
+        else:
+            # 没卡买房，下一个王家
+            KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
         
     def show_update(self):
         """ 客户端显示升级, 传入的location位置"""
@@ -73,3 +73,17 @@ class StudyRoom(KBEngine.Entity, Site, Building):
     def show_downgrade(self):
         """ 客户端显示降级, 传入的location位置"""
         self.curr_player.seat.entity.cell.show_building_downgrade(self.location)
+
+    def sell_site(self, older, newer):
+        """ 卖房子"""
+        if older is not None:  # 不是第一次购买
+            newer.cardpackage.remove_transaction()
+            # 玩家收钱比率
+            self.game_pay /= older.earn_money_rate
+            self.study_pay /= older.earn_money_rate
+            self.game_pay *= newer.earn_money_rate
+            self.study_pay *= newer.earn_money_rate
+        newer.buy_house(self.price, self)
+        self.owner = newer
+        # 买房结束，下一个玩家
+        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()

@@ -6,8 +6,8 @@ from interfaces.Site import Site
 
 price = {'Immunity': 200, 'Transaction': 100, 'Xiuxian': 100, 'book': 50}
 
-class Lychee(KBEngine.Entity, Site):
 
+class Lychee(KBEngine.Entity, Site):
     def __init__(self):
         KBEngine.Entity.__init__(self)
         Site.__init__(self)
@@ -31,4 +31,6 @@ class Lychee(KBEngine.Entity, Site):
         elif boo > 0:
             self.curr_player.card_package.buy_book(boo)
             self.curr_player.card_package.pay_money(boo * price['Book'])
+        # 结束操作，下一位玩家
+        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
 

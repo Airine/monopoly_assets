@@ -55,7 +55,8 @@
 		<enterRoom>
 			<Arg>		ENTITYCALL		</Arg>
 		</enterRoom>
-		<changeRoomSuccess>
+
+    <changeRoomSuccess>
 			<Arg>		ENTITY_ID		</Arg>
 		</changeRoomSuccess>
 
@@ -67,6 +68,10 @@
 			<Exposed/>
 			<Arg>		BOOL				</Arg>
 		</reqChangeReadyState>
-	</CellMethods>
+	
+    <!--主逻辑-->
+    <shake></shake>
+    
+  </CellMethods>
 
 </root>
