@@ -68,7 +68,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("AdminBuilding",
                                         {
                                             "name": "Admin Building",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -78,7 +78,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Library",
                                         {
                                             "name": "Library",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -88,7 +88,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("BuildingOne",
                                         {
                                             "name": "Building One",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -98,7 +98,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Canteen",
                                         {
                                             "name": "Canteen",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -108,7 +108,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Lakeside",
                                         {
                                             "name": "Lake Side",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -118,7 +118,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Lychee",
                                         {
                                             "name": "Lychee Shop",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -128,7 +128,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Supply",
                                         {
                                             "name": "Supply",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -138,7 +138,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("BusStation",
                                         {
                                             "name": "Bus Station",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -148,7 +148,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Stadium",
                                         {
                                             "name": "Stadium",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -158,7 +158,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Hospital",
                                         {
                                             "name": "Hospital",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },
@@ -168,7 +168,7 @@ class Room(KBEngine.Entity):
         KBEngine.createEntityAnywhere("Hotel",
                                         {
                                             "name": "Hotel",
-                                            "room_id": self.roomKey,
+                                            "room": self,
                                             "location": site_id,
                                             "curr_player": entityCall
                                         },

@@ -22,7 +22,7 @@ class Hospital(KBEngine.Entity, Site):
         if self.curr_player.card_package.is_have_immunity():
             self.curr_player.seat.entity.cell.get_rest_in_hospital(2, 1)
         self.curr_player.seat.entity.cell.get_rest_in_hospital(2, 0)
-        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
+        self.room.cell.next()
 
 
     def escape(self):

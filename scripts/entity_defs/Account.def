@@ -130,7 +130,9 @@
     </otherPlayerRest>
 
     <useImmunity></useImmunity>
-    <otherUseImmunity></otherUseImmunity>
+    <otherUseImmunity>
+      <Arg> UINT16 </Arg>
+    </otherUseImmunity>
     
   </ClientMethods>
 
