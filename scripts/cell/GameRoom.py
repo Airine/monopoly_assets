@@ -49,7 +49,7 @@ class GameRoom(KBEngine.Entity, Site, Building):
             KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
 
     def sell_site(self, older, newer):
-        """ 卖房子"""
+        """ 卖房子(玩家第一次建筑的时候也调用)"""
         if older is not None:  # 不是第一次购买
             newer.cardpackage.remove_transaction()
             # 玩家收钱比率
@@ -57,7 +57,10 @@ class GameRoom(KBEngine.Entity, Site, Building):
             self.study_pay /= older.earn_money_rate
             self.game_pay *= newer.earn_money_rate
             self.study_pay *= newer.earn_money_rate
-        newer.buy_house(self.price, self)
+            older.sell_house(2 * self.price, self)
+            newer.buy_house(2 * self.price, self)
+        else:
+            newer.buy_house(self.price, self)
         self.owner = newer
         KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
 

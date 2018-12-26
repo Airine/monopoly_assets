@@ -24,7 +24,6 @@ class Hospital(KBEngine.Entity, Site):
         self.curr_player.seat.entity.cell.get_rest_in_hospital(2, 0)
         self.room.cell.next()
 
-
     def escape(self):
         """ 使用免疫卡逃脱 """
         self.curr_player.remove_immunity()
