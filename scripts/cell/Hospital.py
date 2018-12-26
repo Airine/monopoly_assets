@@ -16,11 +16,14 @@ class Hospital(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 玩家休息两天 """
+        DEBUG_MSG('rest 2 days')
         self.curr_player.set_rest_day(2)
         # room 把角色加入休息列表
-        if self.curr_player.card_package().is_have_immunity():
+        if self.curr_player.card_package.is_have_immunity():
             self.curr_player.seat.entity.cell.get_rest_in_hospital(2, 1)
         self.curr_player.seat.entity.cell.get_rest_in_hospital(2, 0)
+        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
+
 
     def escape(self):
         """ 使用免疫卡逃脱 """

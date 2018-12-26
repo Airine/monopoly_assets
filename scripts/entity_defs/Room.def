@@ -77,7 +77,11 @@
 			<Exposed/>
 			<Arg>		BOOL				</Arg>
 		</reqChangeReadyState>
-	
+
+    <pass_site>
+      <Arg> ENTITY_LIST </Arg>
+    </pass_site>
+    
     <!--主逻辑-->
     <shake></shake>
     

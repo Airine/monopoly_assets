@@ -6,7 +6,7 @@ import random
 ROOM_MAX_PLAYER = 2
 FEN_PEI_TIMER = 1
 CREATE_ROOM_TIMER = 3
-TOTAL_SITE = 20
+TOTAL_SITE = 24
 
 class Halls(KBEngine.Entity):
     def __init__(self):

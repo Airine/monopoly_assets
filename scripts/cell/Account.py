@@ -46,3 +46,12 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.timeOut()
         self.otherClients.otherTimeOut(self.id)
+    
+    def get_rest_in_hospital(self, days, if_immune):
+        if self.client:
+            if if_immune:
+                self.client.useImmunity()
+                self.otherClients.otherUseImmunity(self.id)
+            else:
+                self.client.rest(days)
+                self.otherClients.otherPlayerRest(self.id, days)
