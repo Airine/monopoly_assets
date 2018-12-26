@@ -4,17 +4,25 @@
       <Type> UNICODE </Type>
       <Flags> ALL_CLIENTS </Flags>
     </name>
+    
+    <room>
+      <Type>ENTITYCALL</Type>
+      <Flags>CELL_PRIVATE</Flags>
+    </room>
+    
+    <!--
     <room_id>
       <Type> INT32 </Type>
       <Flags> ALL_CLIENTS </Flags>
     </room_id>
+    -->
     <location>
       <Type> LOCATION_ID </Type>
       <Flags> ALL_CLIENTS </Flags>
     </location>
     <curr_player>
-      <Type> ENTITYCALL </Type>
-      <Flags> ALL_CLIENTS </Flags>
+      <Type> PLAYER </Type>
+      <Flags> CELL_PRIVATE </Flags>
     </curr_player>
   </Properties>
 
@@ -26,7 +34,11 @@
 
 	<CellMethods>
 		<!--玩家进入站点和离开站点-->
-	
+
+    <enter_site>
+      <Arg> PYTHON </Arg>
+    </enter_site>
+    
 		<leave_site>
 			<Arg> ENTITY_ID </Arg>
 		</leave_site>

@@ -15,6 +15,10 @@ class Room(KBEngine.Entity):
         # self.room_master = self.EnterPlayerList[0]
         # self.clearPublicRoomInfo()
         self.game = GameController(self.roomInfo, self.playerMaxCount)
+        self.site_list = list()
+
+    def pass_site(self, site_list):
+       self.site_list = site_list
 
     # TODO: 重写enterRoom
     def enterRoom(self, EntityCall):
@@ -74,6 +78,8 @@ class Room(KBEngine.Entity):
         self.game.state = "playing"
         self.game.seatInfo[0].entity.cell.start_game()
         self.timer_id = self.one_timer()
+        for seat in self.roomInfo.seats:
+            self.site_list[0].cell.enter_site(seat)
 
     def one_timer(self):
         character = self.game.seatInfo[self.game.curr_player_id].character
@@ -95,20 +101,26 @@ class Room(KBEngine.Entity):
     # 由客户端调用？
     def shake(self):
         d1, d2 = self.game.dice.shake()
-        seat = self.game.seatInfo[self.game.curr_player_id]
+        # seat = self.game.seatInfo[self.game.curr_player_id]
+        seat = self.roomInfo.seats[self.game.curr_player_id]
         curr_pos = seat.character.position
-        self.base.site_list[curr_pos].leave_site(seat.entity)
-        steps = d1 + d2  # seat.character.change_position(steps)
-        seat.entity.move_notify(steps)
+        # DEBUG_MSG(self.site_list)
+        INFO_MSG("seat_id")
+        INFO_MSG(seat.userId)
+        INFO_MSG(self.game.curr_player_id)
+        self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
+        steps = d1 + d2  
+        steps = 20
+        seat.character.change_position(steps)
         curr_pos = seat.character.position
-        site = self.base.site_list[curr_pos]
-        # if site == None:
-        if True:
+        seat.entity.cell.move_notify(steps, curr_pos)
+        site = self.site_list[curr_pos]
+        if site == None:
             seat.entity.cell.normal_choose()
         else:
-            site.enter_site(seat)
-            site.site_event()
-        self.next()
+            site.cell.enter_site(seat)
+            site.cell.site_event()
+        # self.next()
 
     def next(self):
         self.delTimer(MAIN_TIMER)
@@ -144,9 +156,6 @@ class GameController:
 
     def is_over(self):
         return self.live_pepole_num == 1
-
-
-
 
 # 房间信息
 class roomInfo:

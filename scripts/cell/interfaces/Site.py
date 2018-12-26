@@ -1,4 +1,5 @@
-
+import KBEngine
+from KBEDebug import *
 """
 当前问题
 1. 医院离开的时候其实不是清空curr_player的，但是好像没有什么影响，新来的人自然会赋值到curr
@@ -14,6 +15,9 @@ class Site(object):
 
     def enter_site(self, seat):
         """ 进入站点 """
+        INFO_MSG("enter site")
+        INFO_MSG(seat)
+        INFO_MSG(seat.character)
         self.curr_player = seat.character
         if seat.character not in self.enter_player_list:
             self.enter_player_list.append(seat.character)
@@ -24,7 +28,9 @@ class Site(object):
 
     def leave_site(self, player_id):
         """ 离开站点 """
-        self.enter_player_list.pop(self.find_player_from_list(player_id))
+        INFO_MSG("leave site")
+        INFO_MSG(player_id)
+        self.enter_player_list.remove(self.find_player_from_list(player_id))
         self.curr_player = None
 
     def site_event(self):
@@ -34,6 +40,6 @@ class Site(object):
     def find_player_from_list(self, player_id):
         """ 通过id 找到在list里的玩家"""
         for character in self.enter_player_list:
-            if player_id == character.palyer_id:
+            if player_id == character.player_id:
                 return character
 

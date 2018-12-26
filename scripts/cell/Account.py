@@ -18,14 +18,12 @@ class Account(KBEngine.Entity):
 
     def playerReadyStateChange(self, state):
         self.isReady = state
-        print("cell account")
-        print(self.isReady)
 
-    def move_notify(self, steps):
+    def move_notify(self, steps, cur_pos):
         # self.palyer.position += steps;
         if self.client:
-            self.client.move(steps)
-        self.otherClients.otherPlayerMove(self.id, steps)
+            self.client.move(steps, cur_pos)
+        self.otherClients.otherPlayerMove(self.id, steps, cur_pos)
 
     def start_game(self):
         self.allClients.startGame()
@@ -48,3 +46,12 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.timeOut()
         self.otherClients.otherTimeOut(self.id)
+    
+    def get_rest_in_hospital(self, days, if_immune):
+        if self.client:
+            if if_immune:
+                self.client.useImmunity()
+                self.otherClients.otherUseImmunity(self.id)
+            else:
+                self.client.rest(days)
+                self.otherClients.otherPlayerRest(self.id, days)

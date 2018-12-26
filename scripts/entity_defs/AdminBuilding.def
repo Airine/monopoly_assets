@@ -12,7 +12,13 @@
 	</BaseMethods>
 
 	<CellMethods>
-		
+    <send_money>
+      
+    </send_money>
+
+    <show_send_money>
+      <Arg> UINT32</Arg>
+    </show_send_money>
 	</CellMethods>
 
 </root>

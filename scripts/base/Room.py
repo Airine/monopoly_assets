@@ -1,7 +1,6 @@
 import Functor
 from KBEDebug import *
 
-
 class Room(KBEngine.Entity):
     def __init__(self):
         KBEngine.Entity.__init__(self)
@@ -9,27 +8,6 @@ class Room(KBEngine.Entity):
         self.roomKey = self.cellData["roomKey"]
         self.MaxPlayerCount = self.cellData["playerMaxCount"]
         self.RoomType = self.cellData["RoomType"]
-        self.site_list = {}
-        self._createSiteEntity(None)
-
-    def event(self, seat, site_id):
-        self.site_list[site_id].cell.enter_site(seat)
-        self.site_list[site_id].cell.site_event()
-
-    def _createSiteEntity(self, entityCall):
-        site_id = 1
-        KBEngine.createEntityAnywhere("BusStation",
-                                      {
-                                          "name": "Bus Station",
-                                          "room_id": self.roomKey,
-                                          "location": site_id,
-                                          "curr_player": entityCall
-                                      },
-                                      Functor.Functor(self._createSiteCB, site_id)
-                                      )
-
-    def _createSiteCB(self, site_id, entityCall):
-        self.site_list[site_id] = entityCall
 
     def NeedPlayersCount(self):
         if self.isDestroyed:
@@ -67,6 +45,8 @@ class Room(KBEngine.Entity):
         if self.MaxPlayerCount > len(self.EnterPlayerList) and self.RoomType == 0:
             KBEngine.globalData["Halls"].roomNeedPlayer(self, self.roomKey)
 
+        self._createSiteEntity(None)
+
     def CanEnterRoom(self, entityCall):
         if entityCall.cell is None:
             print("没有cell")
@@ -82,3 +62,120 @@ class Room(KBEngine.Entity):
                     KBEngine.globalData["Halls"].roomNeedPlayer(self, self.roomKey)
                 self.cell.changeRoomSuccess(playerEntity.id)
                 break
+
+    def _createSiteEntity(self, entityCall):
+        site_id = 0
+        KBEngine.createEntityAnywhere("AdminBuilding",
+                                        {
+                                            "name": "Admin Building",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 3
+        KBEngine.createEntityAnywhere("Library",
+                                        {
+                                            "name": "Library",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 6
+        KBEngine.createEntityAnywhere("BuildingOne",
+                                        {
+                                            "name": "Building One",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 8
+        KBEngine.createEntityAnywhere("Canteen",
+                                        {
+                                            "name": "Canteen",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 10
+        KBEngine.createEntityAnywhere("Lakeside",
+                                        {
+                                            "name": "Lake Side",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 12
+        KBEngine.createEntityAnywhere("Lychee",
+                                        {
+                                            "name": "Lychee Shop",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 14
+        KBEngine.createEntityAnywhere("Supply",
+                                        {
+                                            "name": "Supply",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 16
+        KBEngine.createEntityAnywhere("BusStation",
+                                        {
+                                            "name": "Bus Station",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 18
+        KBEngine.createEntityAnywhere("Stadium",
+                                        {
+                                            "name": "Stadium",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 20
+        KBEngine.createEntityAnywhere("Hospital",
+                                        {
+                                            "name": "Hospital",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+        site_id = 22
+        KBEngine.createEntityAnywhere("Hotel",
+                                        {
+                                            "name": "Hotel",
+                                            "room": self,
+                                            "location": site_id,
+                                            "curr_player": entityCall
+                                        },
+                                        Functor.Functor(self._createSiteCB, site_id)
+                                        )
+
+    def _createSiteCB(self, site_id, entityCall):
+        self.site_list[site_id] = entityCall
+        if site_id == 22:
+            self.cell.pass_site(self.site_list)

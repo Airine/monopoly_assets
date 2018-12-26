@@ -29,7 +29,11 @@
 			<Arg>		ENTITYCALL		</Arg>
 			<Arg>		SPACE_KEY		</Arg>
 		</changeRoom>
-		
+
+    <getRoom>
+      <Arg> SPACE_KEY </Arg>
+    </getRoom>
+    
 	</BaseMethods>
 
 	<CellMethods>
