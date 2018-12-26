@@ -8,7 +8,7 @@ class Supply(KBEngine.Entity):
 		KBEngine.Entity.__init__(self)
 		self.createCellEntityInNewSpace(None)
 		self.name = self.cellData["name"]
-		self.site_id = self.cellData["room_id"]
+		self.site_id = self.cellData["room"]
 		self.location = self.cellData["location"]
 		self.curr_player = self.cellData["curr_player"]
 
