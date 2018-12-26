@@ -104,6 +104,8 @@
     
     <move>
       <Arg> UINT8 </Arg>
+      <Arg> UINT32 </Arg>
+
     </move>
 
     <otherPlayerMove>
@@ -111,7 +113,26 @@
       <Arg> UINT16 </Arg>
       <!--steps-->
       <Arg> UINT8  </Arg>
+      <Arg> UINT32 </Arg>
+
     </otherPlayerMove>
+
+    <rest>
+      <Arg> UINT8 </Arg>
+    </rest>
+
+    <otherPlayerRest>
+      <!--other player id-->
+      <Arg> UINT16 </Arg>
+      <!--steps-->
+      <Arg> UINT8  </Arg>
+
+    </otherPlayerRest>
+
+    <useImmunity></useImmunity>
+    <otherUseImmunity>
+      <Arg> UINT16 </Arg>
+    </otherUseImmunity>
     
   </ClientMethods>
 
@@ -184,6 +205,8 @@
     
     <move_notify>
       <Arg> UINT8 </Arg>
+      <Arg> UINT32 </Arg>
+      <Exposed/>
     </move_notify>
 
     <start_game></start_game>
@@ -193,7 +216,12 @@
     <start_turn></start_turn>
 
     <normal_choose></normal_choose>
-		
-	</CellMethods>
+
+    <get_rest_in_hospital>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT8 </Arg>
+    </get_rest_in_hospital>
+
+  </CellMethods>
 
 </root>
