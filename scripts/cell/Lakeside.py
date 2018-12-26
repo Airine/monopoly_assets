@@ -15,19 +15,29 @@ class Lakeside(KBEngine.Entity, Site):
         """ 随机事件区 """
         r = random.random(0, 1)
         if r <= 0.3:  # 丢失校卡，损失金钱
-            lose_money = random.randint(100, 300)
-            self.curr_player.pay_money(lose_money)
-            self.curr_player.seat.entity.cell.lose_student_card(lose_money)
+            self.curr_player.pay_money(100)
+            self.curr_player.seat.entity.cell.random_event(1)
+        elif r <= 0.35:  # 见到喜欢的异性，上去搭讪, 人格魅力提升
+            self.curr_player.seat.entity.cell.random_event(2)
+        elif r <= 0.36:  # 看见六栋楼下的情侣缠绵，冲上去打了人，获得行政警告
+            self.curr_player.add_administrative_warnning(1)
+            self.curr_player.seat.entity.cell.random_event(3)
+        elif r <= 0.38:  # 主动到宿舍自习室学习，学力点提升
+            self.curr_player.get_ability(1)
+            self.curr_player.seat.entity.cell.random_event(4)
+        elif r <= 0.49:  # 到舞蹈房练习舞蹈
+            self.curr_player.personality.add_art_point(1)
+            self.curr_player.seat.entity.cell.random_event(5)
         elif r <= 0.4:  # 骑滑板车被刘主任发现，跑/不跑
-            self.curr_player.seat.entity.cell.see_schoolmaster()
+            self.curr_player.seat.entity.cell.select_event()
         elif r <= 0.6:  # 看见校长，上前打招呼/走开
-            self.curr_player.seat.entity.cell.see_schoolmaster()
+            self.curr_player.seat.entity.cell.select_event()
         elif r <= 0.8:  # 活动室赶第二天的project，通宵做完美/赶紧随便做完睡觉
-            self.curr_player.seat.entity.cell.group_meeting()
+            self.curr_player.seat.entity.cell.select_event()
         elif r <= 0.9:  # 考试周，一个人复习/一群人复习
-            self.curr_player.seat.entity.cell.review()
+            self.curr_player.seat.entity.cell.select_event()
         elif r <= 1:  # 宿舍有点脏乱了，立即打扫/先等一等
-            self.curr_player.seat.entity.cell.clean_dormitory()
+            self.curr_player.seat.entity.cell.select_event()
 
     def say_hello_to_schoolmaster(self):
         """ 遇见校长打招呼 """

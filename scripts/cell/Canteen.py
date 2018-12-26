@@ -17,17 +17,17 @@ class Canteen(KBEngine.Entity, Site):
         r = random.random(0, 1)
         if r < 0.3:  # 吃到欣园食堂食物中毒，获得赔偿200块
             self.curr_player.earn_money(200)
-            self.curr_player.seat.entity.cell.eat_joy_canteen()
+            self.curr_player.seat.entity.cell.random_event(11)
         elif r < 0.5:  # 吃了一次火锅，幸福美满但什么事情都没有发生
-            self.curr_player.seat.entity.cell.eat_hot_pot()
+            self.curr_player.seat.entity.cell.random_event(12)
         elif r < 0.6:  # 在食堂排队错过上课，学力点扣1
-            self.curr_player.seat.entity.cell.miss_class()
+            self.curr_player.seat.entity.cell.random_event(13)
         elif r < 0.8:  # 受不了食堂点了外卖，金钱减100
             self.curr_player.pay_money(100)
-            self.curr_player.seat.entity.cell.order_food()
+            self.curr_player.seat.entity.cell.random_event(14)
         else:  # 补充能量，获得修仙卡一张
             self.curr_player.card_package.buy_xiuxian()
-            self.curr_player.seat.entity.cell.get_energy()
+            self.curr_player.seat.entity.cell.random_event(15)
 
 
 
