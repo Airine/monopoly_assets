@@ -27,17 +27,19 @@ class Player:
         self.earn_money_rate = 1  # 收钱比率
         self.get_ability_rate = 1  # 获得学历点率
         self.money_per_round = 1000  # 每回合发的钱数
-        self.personality = Personality() # 性格点
+        self.personality = Personality()  # 性格点
 
     def graduate_grade(self):
         """ 升年级，或者毕业 """
-        if self.grade > 4:
-            self.graduation()
-        elif self.ability > GRADUATED_REQUIREMENT[self.grade]:
-            self.grade += 1
-            self.seat.entity.cell.show_graduate(self.grade)
-            # 不管升没升成功loop都置为0， 开始下一个循环（没升学成功其实已经没机会第一了）
-            self.loop = 0
+        self.loop += 1
+        if self.loop >= 10:  # 每10回合判断是否要升学
+            if self.grade > 4:
+                self.graduation()
+            elif self.ability > GRADUATED_REQUIREMENT[self.grade]:
+                self.grade += 1
+                self.seat.entity.cell.show_graduate(self.grade)
+                # 不管升没升成功loop都置为0， 开始下一个循环（没升学成功其实已经没机会第一了）
+                self.loop = 0
 
     def graduation(self):
         """ 毕业操作(包括退学死亡的时候也调用)"""
