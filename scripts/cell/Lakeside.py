@@ -61,7 +61,13 @@ class Lakeside(KBEngine.Entity, Site):
     def not_run_away(self):
         """ 骑滑板车不跑 """
         self.curr_player.personality.add_social_point(1)
-        self.curr_player.add_administrative_warnning(1)
+        r = random.random(0, 1)
+        if r < 0.8:
+            self.curr_player.seat.entity.cell.run_successful()
+        else:
+            # 没跑掉，行政警告
+            self.curr_player.add_administrative_warnning()
+            self.curr_player.seat.entity.cell.run_fail()
 
     def stay_up_for_project(self):
         """ 熬夜做project """

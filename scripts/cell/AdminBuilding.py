@@ -23,7 +23,7 @@ class AdminBuilding(KBEngine.Entity, Site):
     # TODO: 这里调用好像有点问题
     def show_send_money(self, money):
         """ 调用cell 调用客户端显示发放奖学金 """
-        self.curr_player.cell.show_send_money(money)
+        self.curr_player.seat.entity.cell.show_send_money(money)
 
 
 

@@ -47,6 +47,62 @@ class Account(KBEngine.Entity):
             self.client.timeOut()
         self.otherClients.otherTimeOut(self.id)
     
+
+    '''AdminBuilding'''
+    def show_send_money(self, money):
+        if self.client:
+            self.client.sendMoney(money)
+        self.otherClients.otherSendMoney(self.id, money)
+
+    '''Building one'''
+
+    def exam(self):
+        if self.client:
+            self.client.exam()
+
+    def quiz(self):
+        if self.client:
+            self.client.quiz()
+
+    def show_cheat_warning(self):
+        if self.client:
+            self.client.showCheatWarning()
+
+    def show_get_study_ability(self,ab_num):
+        if self.client:
+            self.client.showGetStudyAbility(ab_num)
+
+    '''BusStation'''
+    def select_position_to_move(self):
+        if self.client:
+            self.client.selectPositionToMove()
+
+
+    '''Canteen'''
+
+    def random_event(self,num):
+        if self.client:
+            self.client.randomEvent(num)
+
+    '''GameRoom'''
+    def show_enter_game(self,game_pay,level, type):
+        if self.client:
+            self.client.showEnterGame(game_pay,level, type)
+
+    def show_weather_to_buy(self,owner,price):
+        if self.client:
+            self.client.showWeatherToBuy(owner,price)
+
+    def show_building_update(self,location):
+        if self.client:
+            self.client.showBuildingUpdate(location)
+
+    def show_building_downgrade(self,location):
+        if self.client:
+            self.client.showBuildingDowngrade(location)
+
+    '''Hospital'''
+
     def get_rest_in_hospital(self, days, if_immune):
         if self.client:
             if if_immune:
@@ -55,3 +111,47 @@ class Account(KBEngine.Entity):
             else:
                 self.client.rest(days)
                 self.otherClients.otherPlayerRest(self.id, days)
+
+    '''Hotel'''
+
+    '''Lakeside'''
+    def select_event(self):
+        if self.client:
+            self.client.selectEvent()
+
+
+    def run_successful(self):
+        if self.client:
+            self.client.runSuccessful()
+
+    def run_fail(self):
+        if self.client:
+            self.client.runFail()
+
+    '''Lychee'''
+
+    def showShop(self,money):
+        if self.client:
+            self.client.showShop(money)
+
+    '''Stadium'''
+
+    '''StudyRoom'''
+    def show_enter_study(self,a, b, c_bool,level):
+        if self.client:
+            self.client.showEnterStudy(a, b, c_bool,level)
+
+
+
+    '''Supply'''
+    def select_building(self):
+        if self.client:
+            self.client.selectBuilding()
+
+    def select_building_again(self):
+        if self.client:
+            self.client.selectBuildingAgain()
+
+    def show_destory_building(self,location):
+        if self.client:
+            self.client.showDestoryBuilding(location)
