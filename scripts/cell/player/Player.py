@@ -58,6 +58,8 @@ class Player:
         if self.position + forward_num > SUM_BUILDING_NUM:
             self.loop += 1
         self.position += forward_num
+        if self.position > SUM_BUILDING_NUM:
+            self.get_scholarship(1)
         self.position = self.position % SUM_BUILDING_NUM
 
     def pay_money(self, money_num):
@@ -92,7 +94,7 @@ class Player:
         """ 休息过了一天 """
         self.rest_day -= 1
 
-    def money_per_round(self, i=1):
+    def get_scholarship(self, i=1):
         """每回合发钱, 踩到正门发两倍"""
         scholarship = i * self.money_per_round
         self.money += scholarship
