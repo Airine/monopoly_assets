@@ -127,10 +127,28 @@ class Account(KBEngine.Proxy):
         KBEngine.globalData["Halls"].CreatePrivateRoom(self)
 
     def EnterPrivateRoom(self, room_id):
-        if self.MainState != MAIN_STATE_IDEL:
-            return
-        self.MainState = MAIN_STATE_INGAME
-        KBEngine.globalData["Halls"].joinRoom(self, int(room_id))
+        #if self.MainState != MAIN_STATE_IDEL:
+        #    return
+        #self.MainState = MAIN_STATE_INGAME
+        #KBEngine.globalData["Halls"].joinRoom(self, int(room_id))
+        if KBEngine.globalData["Halls"].getRoom(int(room_id)):
+            self.roomKey = int(room_id)
 
     def ShakeDice(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()
+
+    def EnterRoomSeat(self, seat_id):
+        KBEngine.globalData["Halls"].joinRoomSeat(self, int(self.roomKey), int(seat_id))
+        # KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).enterRoomSeat(self, int(seat_id))
+
+    def RequestRoomSeat(self):
+        #seated = KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.seated
+        #INFO_MSG("room:")
+        #INFO_MSG(str(self.roomKey))
+        #if seated is None:
+            #INFO_MSG("seated is None")
+        seated = [0,0,0,0]    
+        INFO_MSG("avaliable seats")
+        INFO_MSG(seated)
+        if self.client:
+            self.client.InitialChoosePanel(seated[0], seated[1], seated[2], seated[3])

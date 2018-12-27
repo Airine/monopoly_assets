@@ -16,6 +16,7 @@ class Room(KBEngine.Entity):
         # self.clearPublicRoomInfo()
         self.game = GameController(self.roomInfo, self.playerMaxCount)
         self.site_list = list()
+        self.seated = [0,0,0,0]
 
     def pass_site(self, site_list):
        self.site_list = site_list
@@ -33,6 +34,29 @@ class Room(KBEngine.Entity):
                 EntityCall.enterRoomSuccess(self.roomKey)
                 return
 
+    def enterRoomSeat(self, EntityCall, seatIndex):
+        if seatIndex >= len(self.roomInfo.seats):
+            return
+        seat = self.roomInfo.seats[seatIndex]
+        if seat.userId == 0:
+            seat.userId = EntityCall.id
+            seat.entity = EntityCall
+            print("玩家进来了---" + str(seat.userId) + " 座位号为 " + str(seatIndex))
+            EntityCall.changeRoomSeatIndex(seatIndex)
+            self.base.CanEnterRoom(EntityCall)
+            EntityCall.enterRoomSuccess(self.roomKey)
+            # self.seated[seatIndex] = 1
+        else:
+            print('seat already be taken')
+
+    def getSeats(self):
+        players = [0,0,0,0]
+        for i in range(len(self.roomInfo.seats)):
+            seat = self.roomInfo.seats[i]
+            if seat.userId != 0:
+                players[i] = 1
+        return players
+        
     def changeRoomSuccess(self, entityID):
         self.roomInfo.clearDataByEntityID(entityID)
 
@@ -96,7 +120,7 @@ class Room(KBEngine.Entity):
                 self.one_timer()
             else:
                 self.game.seatInfo[self.game.curr_player_id].entity.cell.start_turn()
-                self.addTimer(30,0,MAIN_TIMER)
+                self.addTimer(100,0,MAIN_TIMER)
 
     # 由客户端调用？
     def shake(self):
@@ -110,17 +134,19 @@ class Room(KBEngine.Entity):
         INFO_MSG(self.game.curr_player_id)
         self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
         steps = d1 + d2  
-        steps = 20
+        if self.game.curr_player_id == 0:
+            steps = 20
         seat.character.change_position(steps)
         curr_pos = seat.character.position
-        seat.entity.cell.move_notify(steps, curr_pos)
+        seat.entity.cell.move_notify(self.game.curr_player_id, steps)
         site = self.site_list[curr_pos]
         if site == None:
             seat.entity.cell.normal_choose()
+            # self.next()
         else:
             site.cell.enter_site(seat)
             site.cell.site_event()
-        # self.next()
+        self.next()
 
     def next(self):
         self.delTimer(MAIN_TIMER)
