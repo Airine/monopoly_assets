@@ -19,11 +19,13 @@ class Account(KBEngine.Entity):
     def playerReadyStateChange(self, state):
         self.isReady = state
 
-    def move_notify(self, steps, cur_pos):
+    # def shake_notify(self, dice_1, dice_2):
+    #    pass
+
+    def move_notify(self, seat_index, steps):
         # self.palyer.position += steps;
         if self.client:
-            self.client.move(steps, cur_pos)
-        self.otherClients.otherPlayerMove(self.id, steps, cur_pos)
+            self.allClients.move(seat_index, steps)
 
     def start_game(self):
         self.allClients.startGame()
@@ -48,13 +50,13 @@ class Account(KBEngine.Entity):
         self.otherClients.otherTimeOut(self.id)
     
 
-    '''AdminBuilding'''
+    #AdminBuilding
     def show_send_money(self, money):
         if self.client:
             self.client.sendMoney(money)
         self.otherClients.otherSendMoney(self.id, money)
 
-    '''Building one'''
+    #Building one
 
     def exam(self):
         if self.client:
@@ -72,19 +74,19 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.showGetStudyAbility(ab_num)
 
-    '''BusStation'''
+    #BusStation
     def select_position_to_move(self):
         if self.client:
             self.client.selectPositionToMove()
 
-
-    '''Canteen'''
+    #Canteen
 
     def random_event(self,num):
         if self.client:
             self.client.randomEvent(num)
 
-    '''GameRoom'''
+
+    #GameRoom
     def show_enter_game(self,game_pay,level, type):
         if self.client:
             self.client.showEnterGame(game_pay,level, type)
@@ -101,8 +103,6 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.showBuildingDowngrade(location)
 
-    '''Hospital'''
-
     def get_rest_in_hospital(self, days, if_immune):
         if self.client:
             if if_immune:
@@ -112,13 +112,9 @@ class Account(KBEngine.Entity):
                 self.client.rest(days)
                 self.otherClients.otherPlayerRest(self.id, days)
 
-    '''Hotel'''
-
-    '''Lakeside'''
     def select_event(self):
         if self.client:
             self.client.selectEvent()
-
 
     def run_successful(self):
         if self.client:
@@ -128,22 +124,20 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.runFail()
 
-    '''Lychee'''
+    # Lychee
 
-    def showShop(self,money):
+    def show_shop(self,money):
         if self.client:
-            self.client.showShop(money)
+            self.client.show_shop(money)
 
-    '''Stadium'''
+    # Stadium
 
-    '''StudyRoom'''
+    # StudyRoom
     def show_enter_study(self,a, b, c_bool,level):
         if self.client:
             self.client.showEnterStudy(a, b, c_bool,level)
 
-
-
-    '''Supply'''
+    # Supply
     def select_building(self):
         if self.client:
             self.client.selectBuilding()

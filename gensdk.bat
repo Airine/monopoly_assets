@@ -13,4 +13,4 @@ echo KBE_RES_PATH = %KBE_RES_PATH%
 echo KBE_BIN_PATH = %KBE_BIN_PATH%
 
 cd %curpath%
-start %KBE_BIN_PATH%/kbcmd.exe --clientsdk=unity --outpath=E:\workspace\mahjongGame_by_Kbengine_unity-0.01\mahjongGame_by_Kbengine_unity-0.01\client\MJClient\Assets\Script\usdSDK
+start %KBE_BIN_PATH%/kbcmd.exe --clientsdk=unity --outpath=F:\MJClient\MJClient\Assets\Script\usdSDK

@@ -35,6 +35,11 @@
 			<Type>			UINT8			</Type>
 			<Flags>			ALL_CLIENTS			</Flags>
 		</cur_turn>
+
+    <seated>
+      <Type> PYTHON</Type>
+      <Flags> CELL_PRIVATE</Flags>
+    </seated>
 		
 	</Properties>
 
@@ -47,6 +52,10 @@
 		<enterRoom>
 			<Arg>		ENTITYCALL		</Arg>
 		</enterRoom>
+    <enterRoomSeat>
+      <Arg>   ENTITYCALL</Arg>
+      <Arg>   UINT8</Arg>
+    </enterRoomSeat>
 		<leaveRoom>
 			<Arg>		ENTITY_ID		</Arg>
 		</leaveRoom>
@@ -58,6 +67,8 @@
 			<Arg>		ENTITYCALL		</Arg>
 		</changeRoomSuccess>
 
+    <getCellSeats></getCellSeats>
+    
 	</BaseMethods>
 
 	<CellMethods>
@@ -65,6 +76,13 @@
 			<Arg>		ENTITYCALL		</Arg>
 		</enterRoom>
 
+    <enterRoomSeat>
+      <Arg>   ENTITYCALL</Arg>
+      <Arg>   UINT8</Arg>
+    </enterRoomSeat>
+
+    <getSeats></getSeats>
+    
     <changeRoomSuccess>
 			<Arg>		ENTITY_ID		</Arg>
 		</changeRoomSuccess>
@@ -84,6 +102,8 @@
     
     <!--主逻辑-->
     <shake></shake>
+
+    <next></next>
     
   </CellMethods>
 
