@@ -26,7 +26,7 @@ class Hospital(KBEngine.Entity, Site):
 
     def escape(self):
         """ 使用免疫卡逃脱 """
-        self.curr_player.remove_immunity()
+        self.curr_player.card_package.remove_immunity()
 
     def stay_hospital(self):
         """ 玩家呆着 """

@@ -14,7 +14,7 @@ class Canteen(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 食堂，随机事件区 """
-        r = random.random(0, 1)
+        r = random.random()
         if r < 0.3:  # 吃到欣园食堂食物中毒，获得赔偿200块
             self.curr_player.earn_money(200)
             self.curr_player.seat.entity.cell.random_event(11)
