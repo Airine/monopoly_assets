@@ -13,7 +13,7 @@ class Lakeside(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 随机事件区 """
-        r = random.random(0, 1)
+        r = random.random()
         if r <= 0.3:  # 丢失校卡，损失金钱
             self.curr_player.pay_money(100)
             self.curr_player.seat.entity.cell.random_event(1)
