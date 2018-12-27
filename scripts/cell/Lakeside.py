@@ -10,6 +10,7 @@ class Lakeside(KBEngine.Entity, Site):
     def __init__(self):
         KBEngine.Entity.__init__(self)
         Site.__init__(self)
+        self.select_num = 0
 
     def site_event(self):
         """ 随机事件区 """
@@ -29,15 +30,50 @@ class Lakeside(KBEngine.Entity, Site):
             self.curr_player.personality.add_art_point(1)
             self.curr_player.seat.entity.cell.random_event(5)
         elif r <= 0.4:  # 骑滑板车被刘主任发现，跑/不跑
-            self.curr_player.seat.entity.cell.select_event(52)
+            self.curr_player.seat.entity.cell.select_event('Lakeside', 52)
+            self.select_num = 0
         elif r <= 0.6:  # 看见校长，上前打招呼/走开
-            self.curr_player.seat.entity.cell.select_event(53)
+            self.curr_player.seat.entity.cell.select_event('Lakeside', 53)
+            self.select_num = 1
         elif r <= 0.8:  # 活动室赶第二天的project，通宵做完美/赶紧随便做完睡觉
-            self.curr_player.seat.entity.cell.select_event(54)
+            self.curr_player.seat.entity.cell.select_event('Lakeside', 54)
+            self.select_num = 2
         elif r <= 0.9:  # 考试周，一个人复习/一群人复习
-            self.curr_player.seat.entity.cell.select_event(55)
+            self.curr_player.seat.entity.cell.select_event('Lakeside', 55)
+            self.select_num = 3
         elif r <= 1:  # 宿舍有点脏乱了，立即打扫/先等一等
-            self.curr_player.seat.entity.cell.select_event(56)
+            self.curr_player.seat.entity.cell.select_event('Lakeside', 56)
+            self.select_num = 4
+
+    def select_event_callback(self, select):
+        """选择事件的判断 """
+        if self.select_num == 0:
+            if select == 1:
+                self.run_away()
+            elif select == 2:
+                self.not_run_away()
+            elif select == 3:
+                self.run_away_fail()
+        elif self.select_num == 1:
+            if select == 1:
+                self.say_hello_to_schoolmaster()
+            elif select == 2:
+                self.not_say_hello_to_schoolmaster()
+        elif self.select_num == 2:
+            if select == 1:
+                self.stay_up_for_project()
+            elif select == 2:
+                self.not_stay_up_for_project()
+        elif self.select_num == 3:
+            if select == 1:
+                self.review_alone()
+            elif select == 2:
+                self.review_together()
+        elif self.select_num == 4:
+            if select == 1:
+                self.clean_right_now()
+            elif select == 2:
+                self.clean_later()
 
     def say_hello_to_schoolmaster(self):
         """ 遇见校长打招呼 """
