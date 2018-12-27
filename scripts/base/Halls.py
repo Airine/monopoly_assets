@@ -29,14 +29,14 @@ class Halls(KBEngine.Entity):
     def CreatePrivateRoom(self, entityCall):
         # self._remove_none_room()  # 其实这个操作只用做一次，将自动生成的None型room删除
         entity_list = list()
-        # entity_list.append(entityCall)
+        entity_list.append(entityCall)
         room_id = self._creatRoomEntity(entity_list)
         # entityCall.client.onEnterPrivateRoomSuccess(room_id)
         # self.allRoomEntityList[room_id].enterRoom(entityCall)
-        self.created = room_id
-        self.creating_entity = entityCall
-        if self.create_timer == 0:
-            self.create_timer = self.addTimer(0, 0.5, CREATE_ROOM_TIMER)
+        # self.created = room_id
+        # self.creating_entity = entityCall
+        # if self.create_timer == 0:
+        #     self.create_timer = self.addTimer(0, 0.5, CREATE_ROOM_TIMER)
 
     def join_created(self):
         room_id = self.created

@@ -33,7 +33,7 @@ class StudyRoom(KBEngine.Entity, Site, Building):
                     # 需求（价钱，书籍数量, 是否有修仙卡, 可以获得的学力点）
                     self.curr_player.seat.entity.cell.show_enter_study(0, 1, True, self.level)
                 else:
-                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, False)
+                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, False,self.level)
             else:
                 if self.curr_player.card_package.is_have_xiuxian:
                     # 需求（价钱，书籍数量, 是否有修仙卡）

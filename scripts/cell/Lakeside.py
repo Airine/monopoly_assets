@@ -57,11 +57,11 @@ class Lakeside(KBEngine.Entity, Site):
         self.curr_player.personality.add_social_point(1)
         r = random.random(0, 1)
         if r < 0.8:
-            self.curr_player.seat.entity.run_successful()
+            self.curr_player.seat.entity.cell.run_successful()
         else:
             # 没跑掉，行政警告
             self.curr_player.add_administrative_warnning()
-            self.curr_player.seat.entity.run_fail()
+            self.curr_player.seat.entity.cell.run_fail()
 
     def stay_up_for_project(self):
         """ 熬夜做project """

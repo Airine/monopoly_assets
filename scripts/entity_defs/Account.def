@@ -129,10 +129,93 @@
 
     </otherPlayerRest>
 
+
+
+    <!-- AdminBuilding -->
+    <otherSendMoney>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT32 </Arg>
+    </otherSendMoney>
+
+    <sendMoney>
+      <Arg> UINT32 </Arg>
+    </sendMoney>
+
+    <!-- Building one -->
+    <exam></exam>
+
+    <quiz></quiz>
+
+    <showCheatWarning></showCheatWarning>
+
+    <showGetStudyAbility>
+      <Arg> UINT32 </Arg>
+    </showGetStudyAbility>
+
+    <!-- BusStation -->
+    <selectPositionToMove></selectPositionToMove>
+
+    <!-- Canteen -->
+
+    <randomEvent>
+      <Arg> UINT32 </Arg>
+    </randomEvent>
+
+    <!-- GameRoom -->
+    <showEnterGame>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </showEnterGame>
+
+    <showWeatherToBuy>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </showWeatherToBuy>
+
+    <showBuildingUpdate>
+      <Arg> UINT32 </Arg>
+    </showBuildingUpdate>
+
+    <showBuildingDowngrade>
+      <Arg> UINT32 </Arg>
+    </showBuildingDowngrade>
+
+    <!-- Hospital -->
     <useImmunity></useImmunity>
+
     <otherUseImmunity>
       <Arg> UINT16 </Arg>
     </otherUseImmunity>
+
+    <!-- Lakeside -->
+    <selectEvent></selectEvent>
+
+    <runSuccessful></runSuccessful>
+
+    <runFail></runFail>
+
+    <!-- Lychee -->
+    <showShop></showShop>
+
+    <!-- StudyRoom -->
+    <showEnterStudy>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT8 </Arg>
+      <Arg>		BOOL		</Arg>
+      <Arg> UINT8 </Arg>
+    </showEnterStudy>
+
+
+
+
+    <!-- Supply -->
+    <selectBuilding></selectBuilding>
+
+    <selectBuildingAgain></selectBuildingAgain>
+
+    <showDestoryBuilding>
+      <Arg> UINT8 </Arg>
+    </showDestoryBuilding>
     
   </ClientMethods>
 
@@ -217,11 +300,88 @@
 
     <normal_choose></normal_choose>
 
+
+    <!-- AdminBuilding -->
+    <show_send_money>
+      <Arg> UINT32 </Arg>
+    </show_send_money>
+
+    <!-- Building one -->
+    <exam></exam>
+
+    <quiz></quiz>
+
+    <show_cheat_warning></show_cheat_warning>
+
+    <show_get_study_ability>
+      <Arg> UINT32 </Arg>
+    </show_get_study_ability>
+
+    <!-- BusStation -->
+    <select_position_to_move></select_position_to_move>
+    
+    
+    <!-- Canteen -->
+    
+    <random_event>
+      <Arg> UINT32 </Arg>
+    </random_event>
+    
+    <!-- GameRoom -->
+    <show_enter_game>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </show_enter_game>
+
+    <show_weather_to_buy>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </show_weather_to_buy>
+
+    <show_building_update>
+      <Arg> UINT32 </Arg>
+    </show_building_update>
+
+    <show_building_downgrade>
+      <Arg> UINT32 </Arg>
+    </show_building_downgrade>
+
+    <!-- Hospital -->
     <get_rest_in_hospital>
       <Arg> UINT8 </Arg>
       <Arg> UINT8 </Arg>
     </get_rest_in_hospital>
 
+    <!-- Lakeside -->
+    <select_event></select_event>
+    
+    <run_successful></run_successful>
+
+    <run_fail></run_fail>
+    
+    <!-- Lychee -->
+    <showShop></showShop>
+
+    <!-- StudyRoom -->
+    <show_enter_study>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT8 </Arg>
+      <Arg>		BOOL		</Arg>
+      <Arg> UINT8 </Arg>
+    </show_enter_study>
+
+
+
+
+    <!-- Supply -->
+    <select_building></select_building>
+
+    <select_building_again></select_building_again>
+
+    <show_destory_building>
+      <Arg> UINT8 </Arg>
+    </show_destory_building>
+    
   </CellMethods>
 
 </root>
