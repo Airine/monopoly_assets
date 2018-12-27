@@ -29,8 +29,11 @@ class Halls(KBEngine.Entity):
     def CreatePrivateRoom(self, entityCall):
         # self._remove_none_room()  # 其实这个操作只用做一次，将自动生成的None型room删除
         entity_list = list()
-        entity_list.append(entityCall)
+        # entity_list.append(entityCall)
         room_id = self._creatRoomEntity(entity_list)
+        entityCall.roomKey = room_id
+        INFO_MSG("private room key:"+str(room_id))
+        INFO_MSG("entity room key:"+str(entityCall.roomKey))
         # entityCall.client.onEnterPrivateRoomSuccess(room_id)
         # self.allRoomEntityList[room_id].enterRoom(entityCall)
         # self.created = room_id
@@ -54,6 +57,16 @@ class Halls(KBEngine.Entity):
             DEBUG_MSG('room {} not exsit'.format(roomId))
             return
         self.allRoomEntityList[roomId].enterRoom(entityCall)
+        entityCall.client.onEnterPrivateRoomSuccess(roomId)
+
+    def joinRoomSeat(self, entityCall, roomId, seatIndex):
+        DEBUG_MSG('Trying to join a private room[{}]'.format(roomId))
+        for i in list(self.allRoomEntityList):
+            DEBUG_MSG('room:{}'.format(i))
+        if roomId not in list(self.allRoomEntityList):
+            DEBUG_MSG('room {} not exsit'.format(roomId))
+            return
+        self.allRoomEntityList[roomId].enterRoomSeat(entityCall, seatIndex)
         entityCall.client.onEnterPrivateRoomSuccess(roomId)
 
     def getRoom(self, roomId):
@@ -124,6 +137,7 @@ class Halls(KBEngine.Entity):
                                           "EnterPlayerList": entityList,
                                           "site_list": [None]*TOTAL_SITE,
                                           "playerMaxCount": ROOM_MAX_PLAYER
+
                                       },
                                       Functor.Functor(self._CreatRoomCB, roomId)
                                       )

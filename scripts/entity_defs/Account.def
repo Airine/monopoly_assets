@@ -65,6 +65,15 @@
     <onEnterPrivateRoomSuccess>
       <Arg>	UINT32	</Arg>
     </onEnterPrivateRoomSuccess>
+
+    <InitialChoosePanel>
+      <Arg> UINT8</Arg>
+      <Arg> UINT8</Arg>
+      <Arg> UINT8</Arg>
+      <Arg> UINT8</Arg>
+    </InitialChoosePanel>
+
+
     <!--下面开始是主逻辑相关的-->
 
     <startGame>
@@ -103,28 +112,24 @@
     </otherTimeOut>
     
     <move>
+      
       <Arg> UINT8 </Arg>
+      
       <Arg> UINT32 </Arg>
 
     </move>
 
-    <otherPlayerMove>
-      <!--other player id-->
-      <Arg> UINT16 </Arg>
-      <!--steps-->
-      <Arg> UINT8  </Arg>
-      <Arg> UINT32 </Arg>
-
-    </otherPlayerMove>
-
     <rest>
-      <Arg> UINT8 </Arg>
+      <!--days-->
+      <Arg> UINT16 </Arg>
+      <!--if_immune-->
+      <Arg> UINT8  </Arg>
     </rest>
 
     <otherPlayerRest>
-      <!--other player id-->
+      <!--days-->
       <Arg> UINT16 </Arg>
-      <!--steps-->
+      <!--if_immune-->
       <Arg> UINT8  </Arg>
 
     </otherPlayerRest>
@@ -133,7 +138,7 @@
 
     <!-- AdminBuilding -->
     <otherSendMoney>
-      <Arg> UINT8 </Arg>
+      <!-- <Arg> UINT8 </Arg> -->
       <Arg> UINT32 </Arg>
     </otherSendMoney>
 
@@ -195,7 +200,10 @@
     <runFail></runFail>
 
     <!-- Lychee -->
-    <showShop></showShop>
+    <showShop>
+      <!--当前玩家金钱-->
+      <Arg> UINT32</Arg>
+    </showShop>
 
     <!-- StudyRoom -->
     <showEnterStudy>
@@ -216,6 +224,8 @@
     <showDestoryBuilding>
       <Arg> UINT8 </Arg>
     </showDestoryBuilding>
+
+    <closeEvents></closeEvents>
     
   </ClientMethods>
 
@@ -260,17 +270,42 @@
 		<reqChangeRoom>
 			<Exposed/>
 		</reqChangeRoom>
+    
 		<enterRoomSuccess>
 			<Arg>	SPACE_KEY	</Arg>
 		</enterRoomSuccess>
+    
 		<OnTeleport>
 			<Arg>		ENTITYCALL					</Arg>
 		</OnTeleport>
+    
 		<changeRoomSeatIndex>
 			<Arg>		UINT8		</Arg>
 			<!-- 座位号 -->
 		</changeRoomSeatIndex>
 
+    <EnterRoomSeat>
+      <Arg>		UNICODE		</Arg>
+      <!-- 座位号 -->
+      <Exposed/>
+    </EnterRoomSeat>
+
+    <RequestRoomSeat>
+      <Exposed/>
+    </RequestRoomSeat>
+
+    <Next>
+      <Exposed/>
+    </Next>
+    
+    <!--Events-->
+    <Immute>
+      <Exposed/>
+    </Immute>
+    <StayHospital>
+      <Exposed/>
+    </StayHospital>
+    
   </BaseMethods>
 
 	<CellMethods>
@@ -300,6 +335,7 @@
 
     <normal_choose></normal_choose>
 
+    <close_events></close_events>
 
     <!-- AdminBuilding -->
     <show_send_money>
@@ -331,6 +367,7 @@
     <show_enter_game>
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
+      <Arg> UINT8 </Arg>
     </show_enter_game>
 
     <show_weather_to_buy>
@@ -360,7 +397,9 @@
     <run_fail></run_fail>
     
     <!-- Lychee -->
-    <showShop></showShop>
+    <show_shop>
+      <Arg> UINT32</Arg>
+    </show_shop>
 
     <!-- StudyRoom -->
     <show_enter_study>

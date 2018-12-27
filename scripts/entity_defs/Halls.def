@@ -16,6 +16,11 @@
 			<Arg>		ENTITYCALL		</Arg>
 			<Arg>		UINT32		</Arg>
 		</joinRoom>
+    <joinRoomSeat>
+      <Arg>		ENTITYCALL		</Arg>
+      <Arg>		UINT32		</Arg>
+      <Arg>   UINT8</Arg>
+    </joinRoomSeat>
 		<roomNeedPlayer>
 			<Arg>		ENTITYCALL		</Arg>
 			<Arg>		SPACE_KEY		</Arg>

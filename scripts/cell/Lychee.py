@@ -15,7 +15,7 @@ class Lychee(KBEngine.Entity, Site):
     def site_event(self):
         """ 卖东西 """
         # 客户端显示商店
-        self.curr_player.seat.entity.cell.showShop(self.curr_player.money)
+        self.curr_player.seat.entity.cell.show_shop(self.curr_player.money)
 
     def buy_product(self, im, tra, xiu, boo):
         """ 客户端选择后调用 """
