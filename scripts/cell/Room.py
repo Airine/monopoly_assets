@@ -133,7 +133,7 @@ class Room(KBEngine.Entity):
         INFO_MSG("seat_id")
         INFO_MSG(seat.userId)
         INFO_MSG(self.game.curr_player_id)
-        if self.site_list[curr_pos].cell is not None:
+        if self.site_list[curr_pos] is not None:
             self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
         steps = d1 + d2  
         if self.game.curr_player_id == 0:

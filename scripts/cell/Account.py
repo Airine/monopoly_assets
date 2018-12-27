@@ -57,17 +57,19 @@ class Account(KBEngine.Entity):
     def show_send_money(self, money):
         if self.client:
             self.client.sendMoney(money)
-        self.otherClients.otherSendMoney(self.id, money)
+        self.otherClients.otherSendMoney(money)
 
     #Building one
 
     def exam(self):
         if self.client:
             self.client.exam()
+            self.otherClients.otherExam()
 
     def quiz(self):
         if self.client:
             self.client.quiz()
+            self.otherClients.otherQuiz()
 
     def show_cheat_warning(self):
         if self.client:
