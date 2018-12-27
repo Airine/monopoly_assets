@@ -134,6 +134,10 @@ class Account(KBEngine.Proxy):
         if KBEngine.globalData["Halls"].getRoom(int(room_id)):
             self.roomKey = int(room_id)
 
+    def Next(self):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.next()
+        self.cell.close_events()
+
     def ShakeDice(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.shake()
 
@@ -152,3 +156,9 @@ class Account(KBEngine.Proxy):
         INFO_MSG(seated)
         if self.client:
             self.client.InitialChoosePanel(seated[0], seated[1], seated[2], seated[3])
+
+    def Immute(self):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.escape()
+
+    def StayHospital(self):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.stay_hospital()

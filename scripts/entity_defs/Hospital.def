@@ -12,7 +12,14 @@
 	</BaseMethods>
 
 	<CellMethods>
-		
+
+    <escape>
+      
+    </escape>
+    
+    <stay_hospital>
+      
+    </stay_hospital>
 	</CellMethods>
 
 </root>

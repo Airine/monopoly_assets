@@ -120,13 +120,16 @@
     </move>
 
     <rest>
-      <Arg> UINT8 </Arg>
+      <!--days-->
+      <Arg> UINT16 </Arg>
+      <!--if_immune-->
+      <Arg> UINT8  </Arg>
     </rest>
 
     <otherPlayerRest>
-      <!--other player id-->
+      <!--days-->
       <Arg> UINT16 </Arg>
-      <!--steps-->
+      <!--if_immune-->
       <Arg> UINT8  </Arg>
 
     </otherPlayerRest>
@@ -221,6 +224,8 @@
     <showDestoryBuilding>
       <Arg> UINT8 </Arg>
     </showDestoryBuilding>
+
+    <closeEvents></closeEvents>
     
   </ClientMethods>
 
@@ -288,7 +293,18 @@
     <RequestRoomSeat>
       <Exposed/>
     </RequestRoomSeat>
+
+    <Next>
+      <Exposed/>
+    </Next>
     
+    <!--Events-->
+    <Immute>
+      <Exposed/>
+    </Immute>
+    <StayHospital>
+      <Exposed/>
+    </StayHospital>
     
   </BaseMethods>
 
@@ -319,6 +335,7 @@
 
     <normal_choose></normal_choose>
 
+    <close_events></close_events>
 
     <!-- AdminBuilding -->
     <show_send_money>

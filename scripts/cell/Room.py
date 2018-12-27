@@ -1,4 +1,5 @@
 import random
+import time
 from player.CsPlayer import CsPlayer
 from player.PlayerFactory import PlayerFactory
 from KBEDebug import *
@@ -132,21 +133,22 @@ class Room(KBEngine.Entity):
         INFO_MSG("seat_id")
         INFO_MSG(seat.userId)
         INFO_MSG(self.game.curr_player_id)
-        self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
+        if self.site_list[curr_pos].cell is not None:
+            self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
         steps = d1 + d2  
         if self.game.curr_player_id == 0:
-            steps = 20
+            steps = 2
         seat.character.change_position(steps)
         curr_pos = seat.character.position
         seat.entity.cell.move_notify(self.game.curr_player_id, steps)
+        time.sleep(0.2*steps)
         site = self.site_list[curr_pos]
         if site == None:
-            seat.entity.cell.normal_choose()
-            # self.next()
+            # seat.entity.cell.normal_choose()
+            self.next()
         else:
             site.cell.enter_site(seat)
             site.cell.site_event()
-        self.next()
 
     def next(self):
         self.delTimer(MAIN_TIMER)

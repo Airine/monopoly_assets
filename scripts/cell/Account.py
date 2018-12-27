@@ -49,6 +49,9 @@ class Account(KBEngine.Entity):
             self.client.timeOut()
         self.otherClients.otherTimeOut(self.id)
     
+    def close_events(self):
+        if self.client:
+            self.allClients.closeEvents()
 
     #AdminBuilding
     def show_send_money(self, money):
@@ -85,7 +88,6 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.randomEvent(num)
 
-
     #GameRoom
     def show_enter_game(self,game_pay,level, type):
         if self.client:
@@ -103,14 +105,11 @@ class Account(KBEngine.Entity):
         if self.client:
             self.client.showBuildingDowngrade(location)
 
+    # Hospital
     def get_rest_in_hospital(self, days, if_immune):
         if self.client:
-            if if_immune:
-                self.client.useImmunity()
-                self.otherClients.otherUseImmunity(self.id)
-            else:
-                self.client.rest(days)
-                self.otherClients.otherPlayerRest(self.id, days)
+            self.client.rest(days, if_immune)
+            self.otherClients.otherPlayerRest(days, if_immune)
 
     def select_event(self):
         if self.client:
