@@ -1,6 +1,5 @@
 from KBEDebug import *
 
-
 class Account(KBEngine.Entity):
     def __init__(self):
         KBEngine.Entity.__init__(self)
@@ -93,6 +92,7 @@ class Account(KBEngine.Entity):
     def random_event(self,num):
         if self.client:
             self.client.randomEvent(num)
+            self.otherClients.otherRandomEvent(num)
 
     #GameRoom
     def show_enter_game(self,game_pay,level, type):
@@ -117,9 +117,11 @@ class Account(KBEngine.Entity):
             self.client.rest(days, if_immune)
             self.otherClients.otherPlayerRest(days, if_immune)
 
-    def select_event(self, id):
+    # 选择事件
+    def select_event(self, site_id, id):
         if self.client:
-            self.client.selectEvent(id)
+            self.client.selectEvent(site_id, id)
+            self.otherClients.otherSelectEvent(site_id, id)
 
     def run_successful(self):
         if self.client:

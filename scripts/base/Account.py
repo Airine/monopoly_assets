@@ -7,7 +7,6 @@ MAIN_STATE_IDEL = 1
 MAIN_STATE_MATCH = 2
 MAIN_STATE_INGAME = 3
 
-
 class Account(KBEngine.Proxy):
     def __init__(self):
         KBEngine.Proxy.__init__(self)
@@ -156,6 +155,9 @@ class Account(KBEngine.Proxy):
         INFO_MSG(seated)
         if self.client:
             self.client.InitialChoosePanel(seated[0], seated[1], seated[2], seated[3])
+
+    # Create Study or Game room
+    # def 
     
     # Hosipital
     def Immute(self):
@@ -167,3 +169,9 @@ class Account(KBEngine.Proxy):
     # Lychee
     def BuyGoods(self, im, tra, xiu, boo):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[12].cell.buy_product(im, tra, xiu, boo)
+
+    # Bus Station
+    def MoveTo(self, dest):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].cell.move_player(dest)
+
+    

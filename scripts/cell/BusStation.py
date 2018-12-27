@@ -24,6 +24,6 @@ class BusStation(KBEngine.Entity, Site):
             steps = 24 - (self.location - site_id)
         self.curr_player.change_position(steps)
         # 客户端调用移动动画
-        self.curr_player.seat.entity.cell.move_notify(steps)
+        self.curr_player.seat.entity.cell.move_notify(self.curr_player.seat.seatIndex,steps)
 
 

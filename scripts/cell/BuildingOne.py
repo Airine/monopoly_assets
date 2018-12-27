@@ -24,7 +24,7 @@ class BuildingOne(KBEngine.Entity, Site):
             self.curr_player.seat.entity.cell.quiz(self.quiz_num)
         else:
             # 选择考试
-            self.curr_player.seat.entity.cell.select_event('BuildingOne', 57)
+            self.curr_player.seat.entity.cell.select_event(6, 57)
 
     def select_event_callback(self, select):
         """ 客户端回调 """

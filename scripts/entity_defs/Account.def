@@ -171,6 +171,9 @@
     <randomEvent>
       <Arg> UINT32 </Arg>
     </randomEvent>
+    <otherRandomEvent>
+      <Arg> UINT32 </Arg>
+    </otherRandomEvent>
 
     <!-- GameRoom -->
     <showEnterGame>
@@ -201,7 +204,15 @@
     <!-- Lakeside -->
     <selectEvent>
       <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
     </selectEvent>
+    
+    <otherSelectEvent>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+    </otherSelectEvent>
 
     <runSuccessful></runSuccessful>
 
@@ -342,6 +353,10 @@
       <Exposed/>
     </BuyGoods>
 
+    <MoveTo>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </MoveTo>
   </BaseMethods>
 
 	<CellMethods>
@@ -430,6 +445,8 @@
     <!-- Lakeside -->
     <select_event>
       <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
     </select_event>
     
     <run_successful></run_successful>
