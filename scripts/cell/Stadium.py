@@ -14,7 +14,7 @@ class Stadium(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 随机事件区 """
-        r = random.random(0, 1)
+        r = random.random()
         if r <= 0.2:  # 800 米获得第一，获得奖金300
             self.curr_player.earn_money(300)
             self.curr_player.seat.entity.cell.random_event(16)

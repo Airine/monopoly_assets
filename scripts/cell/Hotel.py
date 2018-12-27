@@ -16,7 +16,7 @@ class Hotel(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 专家公寓发生事件"""
-        r = random.random(0, 1)
+        r = random.random()
         if r < 0.2:  # 借女朋友钱保健被发现，获得行政警告
             self.curr_player.add_administrative_warnning()
             self.curr_player.seat.entity.cell.random_event(6)
