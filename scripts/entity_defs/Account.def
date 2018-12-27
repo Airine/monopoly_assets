@@ -226,6 +226,24 @@
     </showDestoryBuilding>
 
     <closeEvents></closeEvents>
+
+    <updateInfo>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </updateInfo>
     
   </ClientMethods>
 
@@ -420,6 +438,24 @@
     <show_destory_building>
       <Arg> UINT8 </Arg>
     </show_destory_building>
+
+    <update_infos>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </update_infos>
     
   </CellMethods>
 

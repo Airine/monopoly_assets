@@ -26,5 +26,3 @@ class AdminBuilding(KBEngine.Entity, Site):
         self.curr_player.seat.entity.cell.show_send_money(money)
 
 
-
-

@@ -121,6 +121,7 @@ class Room(KBEngine.Entity):
                 self.one_timer()
             else:
                 self.game.seatInfo[self.game.curr_player_id].entity.cell.start_turn()
+                
                 self.addTimer(100,0,MAIN_TIMER)
 
     # 由客户端调用？
@@ -151,11 +152,27 @@ class Room(KBEngine.Entity):
             site.cell.site_event()
 
     def next(self):
+        self._get_infos()
         self.delTimer(MAIN_TIMER)
         if not self.game.dice.repeat:
             self.game.next_player()
         self.one_timer()
 
+    def _get_infos(self):
+        abilitys = list()
+        moneys = list()
+        ranks = [1,2,3,4]
+        for i in range(len(self.roomInfo.seats)):
+            seat = self.roomInfo.seats[i]
+            abilitys.append(seat.entity.ability)
+            moneys.append(seat.entity.money)
+        for i in range(4):
+            for j in range(i+1,4):
+                if abilitys[j] > abilitys[i]:
+                    ranks[j] -= 1
+                    ranks[i] += 1
+        self.game.seatInfo[0].entity.cell.update_infos(moneys[0], abilitys[0], ranks[0], moneys[1], abilitys[1], ranks[1],
+                                                       moneys[2], abilitys[2], ranks[2], moneys[3], abilitys[3], ranks[3])
 
 # --------------------------------------------------------------------------------------------
 #                              Callbacks
