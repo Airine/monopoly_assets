@@ -16,6 +16,12 @@ class GameRoom(KBEngine.Entity, Site, Building):
         """判断是否可以升级"""
         return True
 
+    def leave_site(self, player_id):
+        """ 离开站点 """
+        self.enter_player_list.remove(self.find_player_from_list(player_id))
+        self.curr_player = None
+        self.curr_is_owner = False
+
     def site_event(self):
         """ 付钱或者扣学力点 """
         # 计算玩家需要付的钱, 如果主人是金融系的是要加钱的
@@ -62,7 +68,6 @@ class GameRoom(KBEngine.Entity, Site, Building):
         else:
             newer.buy_house(self.price, self)
         self.owner = newer
-        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
 
     def show_update(self):
         """ 客户端显示升级, 传入的location位置"""

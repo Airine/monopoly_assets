@@ -23,11 +23,6 @@ class Building(object):
         newer.buy_house(self.price, self)
         self.owner = newer
 
-    def set_owner(self, seat):
-        """设置主人"""
-        self.owner = seat.character
-        seat.character.add_house(self)
-
     def update_building(self):
         """升级建筑，最多三级, 收钱翻倍"""
         if self.level < 3:

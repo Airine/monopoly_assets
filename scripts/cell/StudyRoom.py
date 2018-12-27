@@ -20,7 +20,7 @@ class StudyRoom(KBEngine.Entity, Site, Building):
 
     def leave_site(self, player_id):
         """ 离开站点 """
-        self.enter_player_list.pop(self.find_player_from_list(player_id))
+        self.enter_player_list.remove(self.find_player_from_list(player_id))
         self.curr_player = None
         self.curr_is_owner = False
 
