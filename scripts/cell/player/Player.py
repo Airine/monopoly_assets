@@ -110,7 +110,7 @@ class Player:
     def sell_house(self, money, house):
         """ 卖房子 """
         self.earn_money(money)
-        self.house.pop(house)
+        self.house.remove(house)
 
 
 class Personality:
