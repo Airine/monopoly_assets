@@ -24,7 +24,16 @@ class BuildingOne(KBEngine.Entity, Site):
             self.curr_player.seat.entity.cell.quiz(self.quiz_num)
         else:
             # 选择考试
-            self.curr_player.seat.entity.cell.select_event(57)
+            self.curr_player.seat.entity.cell.select_event('BuildingOne', 57)
+
+    def select_event_callback(self, select):
+        """ 客户端回调 """
+        if select == 1:
+            self.cheat_success()
+        elif select ==2:
+            self.not_cheat()
+        elif select ==3:
+            self.cheat_fail()
 
     def check_answer(self, answer):
         """ 客户端调用，检查是否做对quiz"""
