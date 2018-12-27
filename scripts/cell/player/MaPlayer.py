@@ -16,5 +16,9 @@ class MaPlayer(Player):
     def change_position(self, forward_num):
         if random.random() < 0.2:
             self.money += forward_num * 10
+        if self.position + forward_num > SUM_BUILDING_NUM:
+            self.loop += 1
         self.position += forward_num
+        if self.position > SUM_BUILDING_NUM:
+            self.get_scholarship(1)
         self.position = self.position % SUM_BUILDING_NUM
