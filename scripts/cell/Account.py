@@ -70,10 +70,10 @@ class Account(KBEngine.Entity):
             self.client.exam()
             self.otherClients.otherExam()
 
-    def quiz(self):
+    def quiz(self, num):
         if self.client:
-            self.client.quiz()
-            self.otherClients.otherQuiz()
+            self.client.quiz(num)
+            self.otherClients.otherQuiz(num)
 
     def show_cheat_warning(self):
         if self.client:
@@ -117,9 +117,9 @@ class Account(KBEngine.Entity):
             self.client.rest(days, if_immune)
             self.otherClients.otherPlayerRest(days, if_immune)
 
-    def select_event(self):
+    def select_event(self, id):
         if self.client:
-            self.client.selectEvent()
+            self.client.selectEvent(id)
 
     def run_successful(self):
         if self.client:
@@ -133,7 +133,8 @@ class Account(KBEngine.Entity):
 
     def show_shop(self,money):
         if self.client:
-            self.client.show_shop(money)
+            self.client.showShop(money)
+            self.otherClients.otherShowShop(money)
 
     # Stadium
 

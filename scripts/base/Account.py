@@ -156,9 +156,14 @@ class Account(KBEngine.Proxy):
         INFO_MSG(seated)
         if self.client:
             self.client.InitialChoosePanel(seated[0], seated[1], seated[2], seated[3])
-
+    
+    # Hosipital
     def Immute(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.escape()
 
     def StayHospital(self):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.stay_hospital()
+
+    # Lychee
+    def BuyGoods(self, im, tra, xiu, boo):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[12].cell.buy_product(im, tra, xiu, boo)
