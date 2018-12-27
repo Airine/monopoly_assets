@@ -198,7 +198,7 @@ class seat_roomInfo:
         self.seatIndex = seatIndex
 
     def create_player(self, room_id):
-        self.character = PlayerFactory.create_player(self.userId, room_id, '唐博',self, 1)
+        self.character = PlayerFactory.create_player(self.seatIndex, room_id, '唐博',self, 1)
 
 
 # 色子
