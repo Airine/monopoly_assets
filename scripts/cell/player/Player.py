@@ -1,5 +1,5 @@
 from player.CardPackage import *
-
+from player.Ending import form_ending
 SUM_BUILDING_NUM = 24  # 几个格子
 GRADUATED_REQUIREMENT = [30, 50, 70, 90]  # 升级和毕业要求达到的学力点
 """
@@ -40,17 +40,18 @@ class Player:
             self.loop = 0
 
     def graduation(self):
-        """ 毕业操作"""
+        """ 毕业操作(包括退学死亡的时候也调用)"""
         self.seat.entity.cell.show_graduate(self.evaluate_graduation())
 
     def evaluate_graduation(self):
         """ 根据点数评估毕业去向， 并且返回结果"""
-        return "成功毕业好吧"
+        return form_ending(self)
 
     def is_dead(self):
         """ 是否死亡 """
         if self.administrative_warning + self.study_warning >= 3 or self.money <= 0:
-            self.seat.entity.cell.fail()
+            # 退学也是一种毕业
+            self.graduation()
 
     def change_position(self, forward_num):
         """改变位置"""
@@ -98,8 +99,14 @@ class Player:
         return scholarship
 
     def buy_house(self, money, house):
+        """ 买房子 """
         self.pay_money(money)
         self.house.append(house)
+
+    def sell_house(self, money, house):
+        """ 卖房子 """
+        self.earn_money(money)
+        self.house.pop(house)
 
 
 class Personality:

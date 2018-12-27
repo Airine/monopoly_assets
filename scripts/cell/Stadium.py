@@ -30,8 +30,6 @@ class Stadium(KBEngine.Entity, Site):
         elif r <= 0.8:  # 运动健康身体强壮，获得一张修仙卡
             self.curr_player.card_package.buy_xiuxian(1)
             self.curr_player.seat.entity.cell.random_event(20)
-        elif r <= 1:  #
-            self.curr_player.seat.entity.cell.random_event()
 
 
 

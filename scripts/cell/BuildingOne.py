@@ -12,33 +12,43 @@ class BuildingOne(KBEngine.Entity, Site):
     def __init__(self):
         KBEngine.Entity.__init__(self)
         Site.__init__(self)
+        self.quiz_num = 0
+        self.quiz_answer = 0
 
     def site_event(self):
         """ 两个事件，随机发生 """
         r = random.random(0, 1)
         if r < 0.7:
             # 进入教室回答问题
-            self.quiz()
+            self.set_quiz()
+            self.curr_player.seat.entity.cell.quiz(self.quiz_num)
         else:
             # 选择考试
-            self.curr_player.seat.entity.cell.exam()
+            self.curr_player.seat.entity.cell.select_event(57)
 
-    def quiz(self):
-        # 要发一个题库
-        self.curr_player.seat.entity.cell.quiz()
-
-    def exam_choices(self, cheat):
-        """客户端做出考试选择后调用"""
-        if cheat:  # 作弊
-            r = random.random(0, 1)
-            if r < 0.3:  # 考试被抓, 学业警告
-                self.curr_player.add_study_warnning()
-                self.curr_player.seat.entity.cell.show_cheat_warning()  # 客户端显示考试被抓，收到了学业警告
-            else:
-                # 没被抓，学力点+3
-                self.curr_player.get_ability(3)
-                self.curr_player.seat.entity.cell.show_get_study_ability(3)  # 客户端显示学力点增加了3
-        else:
+    def check_answer(self, answer):
+        """ 客户端调用，检查是否做对quiz"""
+        if answer == self.quiz_answer:
             self.curr_player.get_ability(1)
-            self.curr_player.seat.entity.cell.show_get_study_ability(3)  # 客户端显示学力点增加了1
 
+    def set_quiz(self):
+        """ 根据角色获得当前quiz号和答案"""
+        answer = [1, 2, 1, 2, 2, 2, 2, 1, 1, 2, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1]
+        if self.curr_player.major == "CS":
+            self.quiz_num = random.randint(1, 5)
+        elif self.curr_player.major == "EE":
+            self.quiz_num = random.randint(6, 10)
+        elif self.curr_player.major == "MA":
+            self.quiz_num = random.randint(11, 15)
+        elif self.curr_player.major == "FN":
+            self.quiz_num = random.randint(16, 20)
+        self.quiz_answer = answer[self.quiz_num-1]
+
+    def cheat_success(self):
+        self.curr_player.get_ability(3)
+
+    def cheat_fail(self):
+        self.curr_player.add_study_warnning()
+
+    def not_cheat(self):
+        self.curr_player.get_ability(1)
