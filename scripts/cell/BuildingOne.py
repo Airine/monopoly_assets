@@ -30,9 +30,9 @@ class BuildingOne(KBEngine.Entity, Site):
         """ 客户端回调 """
         if select == 1:
             self.cheat_success()
-        elif select ==2:
+        elif select == 2:
             self.not_cheat()
-        elif select ==3:
+        elif select == 3:
             self.cheat_fail()
 
     def check_answer(self, answer):

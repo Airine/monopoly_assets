@@ -21,7 +21,7 @@ class Lakeside(KBEngine.Entity, Site):
         elif r <= 0.35:  # 见到喜欢的异性，上去搭讪, 人格魅力提升
             self.curr_player.seat.entity.cell.random_event(2)
         elif r <= 0.36:  # 看见六栋楼下的情侣缠绵，冲上去打了人，获得行政警告
-            self.curr_player.add_administrative_warnning(1)
+            self.curr_player.add_administrative_warnning()
             self.curr_player.seat.entity.cell.random_event(3)
         elif r <= 0.38:  # 主动到宿舍自习室学习，学力点提升2
             self.curr_player.get_ability(1)
@@ -92,7 +92,7 @@ class Lakeside(KBEngine.Entity, Site):
         """ 跑失败"""
         self.curr_player.personality.add_real_point(1)
         self.curr_player.pay_money(500)
-        self.curr_player.add_administrative_warnning(1)
+        self.curr_player.add_administrative_warnning()
 
     def not_run_away(self):
         """ 骑滑板车不跑 """

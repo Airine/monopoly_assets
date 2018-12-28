@@ -27,3 +27,4 @@ class BusStation(KBEngine.Entity, Site):
         self.curr_player.seat.entity.cell.move_notify(self.curr_player.seat.seatIndex,steps)
 
 
+
