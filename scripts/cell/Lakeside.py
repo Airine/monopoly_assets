@@ -15,30 +15,30 @@ class Lakeside(KBEngine.Entity, Site):
     def site_event(self):
         """ 随机事件区 """
         r = random.random()
-        if r <= 0.3:  # 丢失校卡，损失金钱
+        if r <= 0.2:  # 丢失校卡，损失金钱
             self.curr_player.pay_money(100)
             self.curr_player.seat.entity.cell.random_event(1)
-        elif r <= 0.35:  # 见到喜欢的异性，上去搭讪, 人格魅力提升
+        elif r <= 0.3:  # 见到喜欢的异性，上去搭讪, 人格魅力提升
             self.curr_player.seat.entity.cell.random_event(2)
-        elif r <= 0.36:  # 看见六栋楼下的情侣缠绵，冲上去打了人，获得行政警告
+        elif r <= 0.4:  # 看见六栋楼下的情侣缠绵，冲上去打了人，获得行政警告
             self.curr_player.add_administrative_warnning()
             self.curr_player.seat.entity.cell.random_event(3)
-        elif r <= 0.38:  # 主动到宿舍自习室学习，学力点提升2
+        elif r <= 0.5:  # 主动到宿舍自习室学习，学力点提升2
             self.curr_player.get_ability(1)
             self.curr_player.seat.entity.cell.random_event(4)
-        elif r <= 0.49:  # 到舞蹈房练习舞蹈
+        elif r <= 0.6:  # 到舞蹈房练习舞蹈
             self.curr_player.personality.add_art_point(1)
             self.curr_player.seat.entity.cell.random_event(5)
-        elif r <= 0.4:  # 骑滑板车被刘主任发现，跑/不跑
+        elif r <= 0.7:  # 骑滑板车被刘主任发现，跑/不跑
             self.curr_player.seat.entity.cell.select_event(52)
             self.select_num = 0
-        elif r <= 0.6:  # 看见校长，上前打招呼/走开
+        elif r <= 0.8:  # 看见校长，上前打招呼/走开
             self.curr_player.seat.entity.cell.select_event(53)
             self.select_num = 1
-        elif r <= 0.8:  # 活动室赶第二天的project，通宵做完美/赶紧随便做完睡觉
+        elif r <= 0.88:  # 活动室赶第二天的project，通宵做完美/赶紧随便做完睡觉
             self.curr_player.seat.entity.cell.select_event(54)
             self.select_num = 2
-        elif r <= 0.9:  # 考试周，一个人复习/一群人复习
+        elif r <= 0.95:  # 考试周，一个人复习/一群人复习
             self.curr_player.seat.entity.cell.select_event(55)
             self.select_num = 3
         elif r <= 1:  # 宿舍有点脏乱了，立即打扫/先等一等
