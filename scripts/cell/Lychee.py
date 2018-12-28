@@ -32,5 +32,3 @@ class Lychee(KBEngine.Entity, Site):
             self.curr_player.card_package.buy_book(boo)
             self.curr_player.pay_money(boo * price['Book'])
         # 结束操作，下一位玩家
-        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
-

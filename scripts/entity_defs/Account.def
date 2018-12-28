@@ -392,6 +392,17 @@
       <Arg> INT32 </Arg>
       <Exposed/>
     </MoveTo>
+
+    <Teach>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </Teach>
+    
+    <Lake>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </Lake>
+
   </BaseMethods>
 
 	<CellMethods>
@@ -429,6 +440,7 @@
     <show_send_money>
       <Arg> UINT32 </Arg>
     </show_send_money>
+
 
     <!-- Building one -->
     <exam></exam>

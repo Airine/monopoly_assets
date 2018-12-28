@@ -184,4 +184,9 @@ class Account(KBEngine.Proxy):
     def MoveTo(self, dest):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].cell.move_player(dest)
 
-    
+    # teaching
+    def Teach(self, num):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[6].cell.select_event_callback(num)
+
+    def Lake(self, num):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[10].cell.select_event_callback(num)

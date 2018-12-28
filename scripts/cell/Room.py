@@ -56,6 +56,7 @@ class Room(KBEngine.Entity):
             seat = self.roomInfo.seats[i]
             if seat.userId != 0:
                 players[i] = 1
+        INFO_MSG(players)
         return players
         
     def changeRoomSuccess(self, entityID):
