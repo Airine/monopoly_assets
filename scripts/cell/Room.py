@@ -143,11 +143,11 @@ class Room(KBEngine.Entity):
         seat.character.change_position(steps)
         curr_pos = seat.character.position
         seat.entity.cell.move_notify(self.game.curr_player_id, steps)
-        
         site = self.site_list[curr_pos]
+        #time.sleep(steps/2)
         if site == None:
-            seat.entity.cell.normal_choose()
-            self.next()
+            seat.entity.cell.normal_choose(curr_pos)
+            # self.next()
         else:
             site.cell.enter_site(seat)
             site.cell.site_event()
@@ -163,6 +163,7 @@ class Room(KBEngine.Entity):
         abilitys = list()
         moneys = list()
         ranks = [1,2,3,4]
+        return
         for i in range(len(self.roomInfo.seats)):
             seat = self.roomInfo.seats[i]
             abilitys.append(seat.character.ability)

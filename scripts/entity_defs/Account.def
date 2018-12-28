@@ -94,11 +94,11 @@
     </otherStartTurn>
 
     <normalChoose>
-      
+      <Arg> INT32 </Arg>
     </normalChoose>
     
     <otherNormalChoose>
-
+      <Arg> INT32 </Arg>
     </otherNormalChoose>
 
     <timeOut>
@@ -174,11 +174,7 @@
       <Arg> UINT32 </Arg>
     </otherRandomEvent>
 
-    <!-- GameRoom -->
-    <showEnterGame>
-      <Arg> UINT32 </Arg>
-      <Arg> UINT32 </Arg>
-    </showEnterGame>
+  
 
     <showWeatherToBuy>
       <Arg> UINT32 </Arg>
@@ -235,6 +231,26 @@
       <Arg>		BOOL		</Arg>
       <Arg> UINT8 </Arg>
     </showEnterStudy>
+
+    <otherEnterStudy>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT8 </Arg>
+      <Arg>		BOOL		</Arg>
+      <Arg> UINT8 </Arg>
+    </otherEnterStudy>
+
+    <!-- GameRoom -->
+    <showEnterGame>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </showEnterGame>
+
+    <otherEnterGame>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </otherEnterGame>
 
     <!-- Supply -->
     <selectBuilding></selectBuilding>
@@ -346,10 +362,13 @@
     </Next>
 
     <createStudyRoom>
+      <Arg> INT32 </Arg>
       <Exposed/>
     </createStudyRoom>
 
     <createGameRoom>
+      <Arg> INT32 </Arg>
+
       <Exposed/>
     </createGameRoom>
     
@@ -400,7 +419,9 @@
 
     <start_turn></start_turn>
 
-    <normal_choose></normal_choose>
+    <normal_choose>
+      <Arg> INT32 </Arg>
+    </normal_choose>
 
     <close_events></close_events>
 
@@ -416,7 +437,9 @@
       <Arg> UINT32 </Arg>
     </quiz>
 
-    <show_cheat_warning></show_cheat_warning>
+    <show_cheat_warning>
+      
+    </show_cheat_warning>
 
     <show_get_study_ability>
       <Arg> UINT32 </Arg>
@@ -465,9 +488,13 @@
 
     </select_event>
     
-    <run_successful></run_successful>
+    <run_successful>
+      
+    </run_successful>
 
-    <run_fail></run_fail>
+    <run_fail>
+      
+    </run_fail>
     
     <!-- Lychee -->
     <show_shop>

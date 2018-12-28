@@ -19,7 +19,7 @@ class Account(KBEngine.Entity):
         self.isReady = state
 
     # def shake_notify(self, dice_1, dice_2):
-    #    pass
+    #   pass
 
     def move_notify(self, seat_index, steps):
         # self.palyer.position += steps;
@@ -37,10 +37,10 @@ class Account(KBEngine.Entity):
             self.client.startTurn()
         self.otherClients.otherStartTurn(self.id)
 
-    def normal_choose(self):
+    def normal_choose(self, curr_pos):
         if self.client:
-            self.client.normalChoose()
-        self.otherClients.otherNormalChoose()
+            self.client.normalChoose(curr_pos)
+        self.otherClients.otherNormalChoose(curr_pos)
         pass
 
     def time_out(self):
@@ -98,6 +98,7 @@ class Account(KBEngine.Entity):
     def show_enter_game(self,game_pay,level, type):
         if self.client:
             self.client.showEnterGame(game_pay,level, type)
+            self.allClient.otherEnterGame(game_pay,level, type)
 
     def show_weather_to_buy(self,owner,price):
         if self.client:
@@ -144,6 +145,7 @@ class Account(KBEngine.Entity):
     def show_enter_study(self,a, b, c_bool,level):
         if self.client:
             self.client.showEnterStudy(a, b, c_bool,level)
+            self.otherClients.otherEnterStudy(a, b, c_bool, level)
 
     # Supply
     def select_building(self):
