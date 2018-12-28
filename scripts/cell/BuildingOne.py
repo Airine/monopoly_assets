@@ -17,14 +17,14 @@ class BuildingOne(KBEngine.Entity, Site):
 
     def site_event(self):
         """ 两个事件，随机发生 """
-        r = random.random(0, 1)
+        r = random.random()
         if r < 0.7:
             # 进入教室回答问题
             self.set_quiz()
             self.curr_player.seat.entity.cell.quiz(self.quiz_num)
         else:
             # 选择考试
-            self.curr_player.seat.entity.cell.select_event('BuildingOne', 57)
+            self.curr_player.seat.entity.cell.select_event(6, 57)
 
     def select_event_callback(self, select):
         """ 客户端回调 """

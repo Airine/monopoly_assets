@@ -1,6 +1,5 @@
 from KBEDebug import *
 
-
 class Account(KBEngine.Entity):
     def __init__(self):
         KBEngine.Entity.__init__(self)
@@ -52,7 +51,11 @@ class Account(KBEngine.Entity):
     def close_events(self):
         if self.client:
             self.allClients.closeEvents()
-
+       
+    def update_infos(self, m1, a1, r1, m2, a2, r2, m3, a3, r3, m4, a4, r4):
+        if self.client:
+            self.allClients.updateInfo(m1, a1, r1, m2, a2, r2, m3, a3, r3, m4, a4, r4)
+    
     #AdminBuilding
     def show_send_money(self, money):
         if self.client:
@@ -66,10 +69,10 @@ class Account(KBEngine.Entity):
             self.client.exam()
             self.otherClients.otherExam()
 
-    def quiz(self):
+    def quiz(self, num):
         if self.client:
-            self.client.quiz()
-            self.otherClients.otherQuiz()
+            self.client.quiz(num)
+            self.otherClients.otherQuiz(num)
 
     def show_cheat_warning(self):
         if self.client:
@@ -89,6 +92,7 @@ class Account(KBEngine.Entity):
     def random_event(self,num):
         if self.client:
             self.client.randomEvent(num)
+            self.otherClients.otherRandomEvent(num)
 
     #GameRoom
     def show_enter_game(self,game_pay,level, type):
@@ -113,9 +117,11 @@ class Account(KBEngine.Entity):
             self.client.rest(days, if_immune)
             self.otherClients.otherPlayerRest(days, if_immune)
 
-    def select_event(self):
+    # 选择事件
+    def select_event(self, site_id, id):
         if self.client:
-            self.client.selectEvent()
+            self.client.selectEvent(site_id, id)
+            self.otherClients.otherSelectEvent(site_id, id)
 
     def run_successful(self):
         if self.client:
@@ -129,7 +135,8 @@ class Account(KBEngine.Entity):
 
     def show_shop(self,money):
         if self.client:
-            self.client.show_shop(money)
+            self.client.showShop(money)
+            self.otherClients.otherShowShop(money)
 
     # Stadium
 

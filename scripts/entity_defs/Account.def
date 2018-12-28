@@ -149,7 +149,13 @@
     <!-- Building one -->
     <exam></exam>
 
-    <quiz></quiz>
+    <quiz>
+      <Arg> UINT32 </Arg>
+    </quiz>
+
+    <otherQuiz>
+      <Arg> UINT32 </Arg>
+    </otherQuiz>
 
     <showCheatWarning></showCheatWarning>
 
@@ -165,6 +171,9 @@
     <randomEvent>
       <Arg> UINT32 </Arg>
     </randomEvent>
+    <otherRandomEvent>
+      <Arg> UINT32 </Arg>
+    </otherRandomEvent>
 
     <!-- GameRoom -->
     <showEnterGame>
@@ -193,7 +202,17 @@
     </otherUseImmunity>
 
     <!-- Lakeside -->
-    <selectEvent></selectEvent>
+    <selectEvent>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+    </selectEvent>
+    
+    <otherSelectEvent>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+    </otherSelectEvent>
 
     <runSuccessful></runSuccessful>
 
@@ -205,6 +224,11 @@
       <Arg> UINT32</Arg>
     </showShop>
 
+    <otherShowShop>
+      <!--当前玩家金钱-->
+      <Arg> UINT32</Arg>
+    </otherShowShop>
+
     <!-- StudyRoom -->
     <showEnterStudy>
       <Arg> UINT8 </Arg>
@@ -212,9 +236,6 @@
       <Arg>		BOOL		</Arg>
       <Arg> UINT8 </Arg>
     </showEnterStudy>
-
-
-
 
     <!-- Supply -->
     <selectBuilding></selectBuilding>
@@ -226,6 +247,24 @@
     </showDestoryBuilding>
 
     <closeEvents></closeEvents>
+
+    <updateInfo>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </updateInfo>
     
   </ClientMethods>
 
@@ -305,7 +344,19 @@
     <StayHospital>
       <Exposed/>
     </StayHospital>
-    
+
+    <BuyGoods>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </BuyGoods>
+
+    <MoveTo>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </MoveTo>
   </BaseMethods>
 
 	<CellMethods>
@@ -345,7 +396,9 @@
     <!-- Building one -->
     <exam></exam>
 
-    <quiz></quiz>
+    <quiz>
+      <Arg> UINT32 </Arg>
+    </quiz>
 
     <show_cheat_warning></show_cheat_warning>
 
@@ -390,7 +443,11 @@
     </get_rest_in_hospital>
 
     <!-- Lakeside -->
-    <select_event></select_event>
+    <select_event>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+    </select_event>
     
     <run_successful></run_successful>
 
@@ -409,9 +466,6 @@
       <Arg> UINT8 </Arg>
     </show_enter_study>
 
-
-
-
     <!-- Supply -->
     <select_building></select_building>
 
@@ -420,6 +474,24 @@
     <show_destory_building>
       <Arg> UINT8 </Arg>
     </show_destory_building>
+
+    <update_infos>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+      <Arg> UINT32 </Arg>
+    </update_infos>
     
   </CellMethods>
 
