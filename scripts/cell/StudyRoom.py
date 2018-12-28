@@ -28,6 +28,7 @@ class StudyRoom(KBEngine.Entity, Site, Building):
         """ 询问是否要进入自习室学习 """
         if self.curr_player.card_package.is_have_book():
             if self.curr_player.player_id == self.owner.player_id:  # 如果是自习室主人
+                INFO_MSG("主人学习")
                 self.curr_is_owner = True
                 if self.curr_player.card_package.is_have_xiuxian:
                     # 需求（价钱，书籍数量, 是否有修仙卡, 可以获得的学力点）
@@ -35,6 +36,7 @@ class StudyRoom(KBEngine.Entity, Site, Building):
                 else:
                     self.curr_player.seat.entity.cell.show_enter_study(0, 1, False,self.level)
             else:
+                INFO_MSG("别人学习")
                 if self.curr_player.card_package.is_have_xiuxian:
                     # 需求（价钱，书籍数量, 是否有修仙卡）
                     self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, True, self.level)
@@ -43,19 +45,23 @@ class StudyRoom(KBEngine.Entity, Site, Building):
 
     def player_study(self):
         """ 不用卡学习 """
+        INFO_MSG("用卡学习")
         if not self.curr_is_owner:
             # 玩家付钱，主人挣钱
             self.curr_player.pay_money(self.study_pay)
             self.owner.earn_money(self.study_pay)
+        self.curr_player.card_package.remove_book()
         self.curr_player.get_ability(self.level)
 
     def player_use_xiuxian_card_study(self):
         """使用休修仙卡学习"""
+        INFO_MSG("不用卡学习")
         self.curr_player.card_package.remove_xiuxian()
         if not self.curr_is_owner:
             # 玩家付钱，主人挣钱
             self.curr_player.pay_money(self.study_pay)
             self.owner.earn_money(self.study_pay)
+        self.curr_player.card_package.remove_book()
         self.curr_player.get_ability(2 * self.level)
 
     def try_to_buy(self):
@@ -88,4 +94,5 @@ class StudyRoom(KBEngine.Entity, Site, Building):
         else:
             newer.buy_house(self.price, self)
         self.owner = newer
+        INFO_MSG("新的主人是{}".format(newer.player_id))
         KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
