@@ -98,8 +98,7 @@
     </normalChoose>
     
     <otherNormalChoose>
-      <!--other player id-->
-      <Arg> UINT16 </Arg>
+
     </otherNormalChoose>
 
     <timeOut>
@@ -265,6 +264,15 @@
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
     </updateInfo>
+
+    <onCreateStudyRoom>
+      <Arg> INT32 </Arg>
+    </onCreateStudyRoom>
+
+    <onCreateGameRoom>
+      <Arg> INT32 </Arg>
+    </onCreateGameRoom>
+    
     
   </ClientMethods>
 
@@ -336,6 +344,14 @@
     <Next>
       <Exposed/>
     </Next>
+
+    <createStudyRoom>
+      <Exposed/>
+    </createStudyRoom>
+
+    <createGameRoom>
+      <Exposed/>
+    </createGameRoom>
     
     <!--Events-->
     <Immute>
@@ -492,6 +508,14 @@
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
     </update_infos>
+
+    <on_create_study_room>
+      <Arg> INT32 </Arg>
+    </on_create_study_room>
+
+    <on_create_game_room>
+      <Arg> INT32 </Arg>
+    </on_create_game_room>
     
   </CellMethods>
 

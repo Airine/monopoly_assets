@@ -105,7 +105,7 @@ class Room(KBEngine.Entity):
         self.timer_id = self.one_timer()
         for seat in self.roomInfo.seats:
             self.site_list[0].cell.enter_site(seat)
-        self._get_infos()
+        # self._get_infos()
 
     def one_timer(self):
         character = self.game.seatInfo[self.game.curr_player_id].character
@@ -146,14 +146,14 @@ class Room(KBEngine.Entity):
         
         site = self.site_list[curr_pos]
         if site == None:
-            # seat.entity.cell.normal_choose()
+            seat.entity.cell.normal_choose()
             self.next()
         else:
             site.cell.enter_site(seat)
             site.cell.site_event()
 
     def next(self):
-        self._get_infos()
+        # self._get_infos()
         self.delTimer(MAIN_TIMER)
         if not self.game.dice.repeat:
             self.game.next_player()

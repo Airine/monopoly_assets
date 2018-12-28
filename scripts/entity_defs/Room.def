@@ -68,8 +68,18 @@
 		</changeRoomSuccess>
 
     <getCellSeats></getCellSeats>
-    
-	</BaseMethods>
+
+    <create_study_room>
+      <Arg> ENTITYCALL</Arg>
+      <Arg> INT32</Arg>
+    </create_study_room>
+
+    <create_game_room>
+      <Arg> ENTITYCALL</Arg>
+      <Arg> INT32</Arg>
+    </create_game_room>
+
+  </BaseMethods>
 
 	<CellMethods>
 		<enterRoom>

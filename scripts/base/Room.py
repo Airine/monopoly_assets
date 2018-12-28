@@ -79,6 +79,42 @@ class Room(KBEngine.Entity):
                 self.cell.changeRoomSuccess(playerEntity.id)
                 break
 
+    def create_study_room(self, entityCall, curr_pos):
+        site_id = curr_pos
+        KBEngine.createEntityAnywhere("StudyRoom",
+                                      {"price": 500,
+                                       "owner": entityCall,
+                                       "level": 1,
+                                       "name": "StudyRoom",
+                                       "room": self,
+                                       "location": site_id,
+                                       "curr_player": entityCall
+                                       },
+                                       Functor.Functor(self._createStudyRoom, site_id)
+                                      )
+
+    def _createStudyRoom(self, site_id, entityCall):
+        self.site_list[site_id] = entityCall
+        self.cell.pass_site(self.site_list)
+
+    def create_game_room(self, entityCall, curr_pos):
+        site_id = curr_pos
+        KBEngine.createEntityAnywhere("GameRoom",
+                                      {"price": 500,
+                                       "owner": entityCall,
+                                       "level": 1,
+                                       "name": "GameRoom",
+                                       "room": self,
+                                       "location": site_id,
+                                       "curr_player": entityCall
+                                       },
+                                       Functor.Functor(self._createGameRoom, site_id)
+                                      )
+
+    def _createGameRoom(self, site_id, entityCall):
+        self.site_list[site_id] = entityCall
+        self.cell.pass_site(self.site_list)
+
     def _createSiteEntity(self, entityCall):
         site_id = 0
         KBEngine.createEntityAnywhere("AdminBuilding",

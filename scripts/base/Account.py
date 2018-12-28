@@ -157,7 +157,20 @@ class Account(KBEngine.Proxy):
             self.client.InitialChoosePanel(seated[0], seated[1], seated[2], seated[3])
 
     # Create Study or Game room
-    # def 
+    def createStudyRoom(self):
+        seat_id = self.roomSeatIndex
+        room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
+        curr_pos = room.cell.roomInfo.seats[seat_id].character.position
+        room.create_study_room(self, curr_pos)
+        self.cell.on_create_study_room(curr_pos)
+
+
+    def createGameRoom(self):
+        seat_id = self.roomSeatIndex
+        room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
+        curr_pos = room.cell.roomInfo.seats[seat_id].character.position
+        room.create_game_room(self, curr_pos)
+        self.cell.on_create_game_room(curr_pos)
     
     # Hosipital
     def Immute(self):

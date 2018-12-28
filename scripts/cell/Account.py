@@ -40,7 +40,7 @@ class Account(KBEngine.Entity):
     def normal_choose(self):
         if self.client:
             self.client.normalChoose()
-        self.otherClients.otherNormalChoose(self.id)
+        self.otherClients.otherNormalChoose()
         pass
 
     def time_out(self):
@@ -157,3 +157,11 @@ class Account(KBEngine.Entity):
     def show_destory_building(self,location):
         if self.client:
             self.client.showDestoryBuilding(location)
+
+    def on_create_study_room(self, curr_pos):
+        if self.client:
+            self.allClients.onCreateStudyRoom(curr_pos)
+
+    def on_create_game_room(self, curr_pos):
+        if self.client:
+            self.allClients.onCreateGameRoom(curr_pos)
