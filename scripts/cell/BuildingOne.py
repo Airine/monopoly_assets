@@ -18,7 +18,7 @@ class BuildingOne(KBEngine.Entity, Site):
     def site_event(self):
         """ 两个事件，随机发生 """
         r = random.random()
-        if r < 0.7:
+        if r < 0.5:
             # 进入教室回答问题
             self.set_quiz()
             self.curr_player.seat.entity.cell.quiz(self.quiz_num)
