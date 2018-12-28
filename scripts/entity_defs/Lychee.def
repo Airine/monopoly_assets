@@ -13,7 +13,12 @@
   </BaseMethods>
 
   <CellMethods>
-
+    <buy_product>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+    </buy_product>
   </CellMethods>
 
 </root>
