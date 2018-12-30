@@ -148,7 +148,7 @@ class Room(KBEngine.Entity):
         #    # self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
-            steps = 1
+            steps = 8
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)
@@ -178,6 +178,8 @@ class Room(KBEngine.Entity):
         ranks = [1,2,3,4]
         for i in range(len(self.roomInfo.seats)):
             seat = self.roomInfo.seats[i]
+            INFO_MSG(seat.character)
+            INFO_MSG(seat.character.money)
             abilitys[i] = seat.character.ability
             moneys[i] = seat.character.money
 

@@ -15,6 +15,9 @@ class Canteen(KBEngine.Entity, Site):
     def site_event(self):
         """ 食堂，随机事件区 """
         r = random.random()
+        INFO_MSG(self.curr_player)
+        INFO_MSG(self.curr_player.money)
+        self.curr_player.earn_money(200)
         if r < 0.3:  # 吃到欣园食堂食物中毒，获得赔偿200块
             self.curr_player.earn_money(200)
             self.curr_player.seat.entity.cell.random_event(11)
@@ -30,9 +33,11 @@ class Canteen(KBEngine.Entity, Site):
             self.curr_player.seat.entity.cell.random_event(14)
             INFO_MSG("wai mai")
         else:  # 补充能量，获得修仙卡一张
-            self.curr_player.card_package.buy_xiuxian()
+            self.curr_player.card_package.buy_xiuxian(1)
             self.curr_player.seat.entity.cell.random_event(15)
             INFO_MSG("xiu xianka")
+        INFO_MSG(self.curr_player)
+        INFO_MSG(self.curr_player.money)
 
 
 
