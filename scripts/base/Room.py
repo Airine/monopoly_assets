@@ -83,12 +83,11 @@ class Room(KBEngine.Entity):
         site_id = curr_pos
         KBEngine.createEntityAnywhere("StudyRoom",
                                       {"price": 500,
-                                       "owner": entityCall,
                                        "level": 1,
                                        "name": "StudyRoom",
                                        "room": self,
                                        "location": site_id,
-                                       "curr_player": entityCall
+                                       "curr_player": None
                                        },
                                        Functor.Functor(self._createStudyRoom, site_id)
                                       )
@@ -101,12 +100,11 @@ class Room(KBEngine.Entity):
         site_id = curr_pos
         KBEngine.createEntityAnywhere("GameRoom",
                                       {"price": 500,
-                                       "owner": entityCall,
                                        "level": 1,
                                        "name": "GameRoom",
                                        "room": self,
                                        "location": site_id,
-                                       "curr_player": entityCall
+                                       "curr_player": None
                                        },
                                        Functor.Functor(self._createGameRoom, site_id)
                                       )

@@ -25,6 +25,8 @@ class GameRoom(KBEngine.Entity, Site, Building):
     def site_event(self):
         """ 付钱或者扣学力点 """
         # 计算玩家需要付的钱, 如果主人是金融系的是要加钱的
+        self.room.cell.next()
+        return
         if self.curr_player.player_id == self.owner.player_id:  # 如果是主人，什么事都没有
             self.curr_is_owner = True
         else:

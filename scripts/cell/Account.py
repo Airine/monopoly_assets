@@ -18,8 +18,9 @@ class Account(KBEngine.Entity):
     def playerReadyStateChange(self, state):
         self.isReady = state
 
-    # def shake_notify(self, dice_1, dice_2):
-    #   pass
+    def shake_notify(self, dice_1, dice_2):
+        if self.client:
+            self.allClients.StartDice(dice_1, dice_2)
 
     def move_notify(self, seat_index, steps):
         # self.palyer.position += steps;
@@ -119,10 +120,10 @@ class Account(KBEngine.Entity):
             self.otherClients.otherPlayerRest(days, if_immune)
 
     # 选择事件
-    def select_event(self, site_id, id):
+    def select_event(self, id):
         if self.client:
-            self.client.selectEvent(site_id, id)
-            self.otherClients.otherSelectEvent(site_id, id)
+            self.client.selectEvent(id)
+            self.otherClients.otherSelectEvent(id)
 
     def run_successful(self):
         if self.client:
@@ -167,3 +168,7 @@ class Account(KBEngine.Entity):
     def on_create_game_room(self, curr_pos):
         if self.client:
             self.allClients.onCreateGameRoom(curr_pos)
+    
+    def end_game_rand(self, num, seat):
+        if self.client:
+            self.client.endGameRand(num, seat)

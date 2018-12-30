@@ -30,7 +30,8 @@ class Site(object):
         """ 离开站点 """
         INFO_MSG("leave site")
         INFO_MSG(player_id)
-        self.enter_player_list.remove(self.find_player_from_list(player_id))
+        if self.find_player_from_list(player_id) in self.enter_player_list:
+            self.enter_player_list.remove(self.find_player_from_list(player_id))
         self.curr_player = None
 
     def site_event(self):

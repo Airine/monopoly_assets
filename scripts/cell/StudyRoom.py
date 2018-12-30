@@ -26,6 +26,8 @@ class StudyRoom(KBEngine.Entity, Site, Building):
 
     def site_event(self):
         """ 询问是否要进入自习室学习 """
+        self.room.cell.next()
+        return
         if self.curr_player.card_package.is_have_book():
             if self.curr_player.player_id == self.owner.player_id:  # 如果是自习室主人
                 INFO_MSG("主人学习")

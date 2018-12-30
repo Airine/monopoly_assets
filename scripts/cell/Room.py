@@ -5,6 +5,8 @@ from player.PlayerFactory import PlayerFactory
 from KBEDebug import *
 
 MAIN_TIMER = 1
+ROOM_MAX_PLAYER = 1
+
 
 class Room(KBEngine.Entity):
     def __init__(self):
@@ -18,6 +20,7 @@ class Room(KBEngine.Entity):
         self.game = GameController(self.roomInfo, self.playerMaxCount)
         self.site_list = list()
         self.seated = [0,0,0,0]
+        self.loop = 25
 
     def pass_site(self, site_list):
        self.site_list = site_list
@@ -106,7 +109,7 @@ class Room(KBEngine.Entity):
         self.timer_id = self.one_timer()
         for seat in self.roomInfo.seats:
             self.site_list[0].cell.enter_site(seat)
-        # self._get_infos()
+        self._get_infos()
 
     def one_timer(self):
         character = self.game.seatInfo[self.game.curr_player_id].character
@@ -129,48 +132,57 @@ class Room(KBEngine.Entity):
     # 由客户端调用？
     def shake(self):
         d1, d2 = self.game.dice.shake()
-        # seat = self.game.seatInfo[self.game.curr_player_id]
         seat = self.roomInfo.seats[self.game.curr_player_id]
+        # seat.entity.cell.shake_notify(d1,d2)
+        self.loop -= 1
+        if self.loop == 0:
+            for seat in self.roomInfo.seats:
+                seat.entity.cell.end_game_rand(random.randint(0,6), seat.seatIndex)
+        # seat = self.game.seatInfo[self.game.curr_player_id]
         curr_pos = seat.character.position
         # DEBUG_MSG(self.site_list)
         INFO_MSG("seat_id")
         INFO_MSG(seat.userId)
         INFO_MSG(self.game.curr_player_id)
-        if self.site_list[curr_pos] is not None:
-            self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
-        steps = d1 + d2  
+        #if self.site_list[curr_pos] is not None:
+        #    # self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
+        steps = d1 + d2
+        if ROOM_MAX_PLAYER == 1:
+            steps = 1
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)
         curr_pos = seat.character.position
         seat.entity.cell.move_notify(self.game.curr_player_id, steps)
         site = self.site_list[curr_pos]
-        #time.sleep(steps/2)
         if site == None:
             seat.entity.cell.normal_choose(curr_pos)
             # self.next()
         else:
+            if curr_pos == 6:
+                self.next()
+                return
             site.cell.enter_site(seat)
             site.cell.site_event()
 
     def next(self):
-        # self._get_infos()
+        self._get_infos()
         self.delTimer(MAIN_TIMER)
         if not self.game.dice.repeat:
             self.game.next_player()
         self.one_timer()
 
     def _get_infos(self):
-        abilitys = list()
-        moneys = list()
+        abilitys = [0,0,0,0]
+        moneys = [0,0,0,0]
         ranks = [1,2,3,4]
-        return
         for i in range(len(self.roomInfo.seats)):
             seat = self.roomInfo.seats[i]
-            abilitys.append(seat.character.ability)
-            moneys.append(seat.character.money)
-        for i in range(4):
-            for j in range(i+1,4):
+            abilitys[i] = seat.character.ability
+            moneys[i] = seat.character.money
+
+        for i in range(ROOM_MAX_PLAYER):
+            for j in range(i+1,ROOM_MAX_PLAYER):
                 if abilitys[j] > abilitys[i]:
                     ranks[j] -= 1
                     ranks[i] += 1

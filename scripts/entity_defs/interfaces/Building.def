@@ -1,13 +1,9 @@
 <root>
 	<Properties>
 		<price>
-			<Type> UNICODE </Type>
+			<Type> INT32 </Type>
 			<Flags> ALL_CLIENTS </Flags>
 		</price>
-		<owner>
-			<Type> ENTITYCALL </Type>
-			<Flags> ALL_CLIENTS </Flags>
-		</owner>
 		<level>
 			<Type> LEVEL </Type>
 			<Flags> ALL_CLIENTS </Flags>

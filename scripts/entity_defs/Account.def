@@ -47,6 +47,16 @@
 	</Properties>
 
 	<ClientMethods>
+    <endGameRand>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+
+    </endGameRand>
+    <StartDice>
+      <Arg>UINT8 </Arg>
+      <Arg>UINT8 </Arg>
+    </StartDice>
+    
 		<OnReqCreateAvatar>
 			<Arg>	UINT8	</Arg>
 		</OnReqCreateAvatar>
@@ -199,12 +209,10 @@
     <!-- Lakeside -->
     <selectEvent>
       <Arg> UINT32 </Arg>
-      <Arg> UINT32 </Arg>
 
     </selectEvent>
     
     <otherSelectEvent>
-      <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
 
     </otherSelectEvent>
@@ -406,6 +414,12 @@
   </BaseMethods>
 
 	<CellMethods>
+    
+    <shake_notify>
+      <Arg> UINT8 </Arg>
+      <Arg> UINT8 </Arg>
+    </shake_notify>
+    
 		<LeaveRoom>
 			<Exposed/>
 		</LeaveRoom>
@@ -496,7 +510,6 @@
     <!-- Lakeside -->
     <select_event>
       <Arg> UINT32 </Arg>
-      <Arg> UINT32 </Arg>
 
     </select_event>
     
@@ -555,6 +568,12 @@
     <on_create_game_room>
       <Arg> INT32 </Arg>
     </on_create_game_room>
+
+    <end_game_rand>
+      <Arg> INT32 </Arg>
+      <Arg> INT32 </Arg>
+
+    </end_game_rand>
     
   </CellMethods>
 
