@@ -145,11 +145,6 @@ class Account(KBEngine.Proxy):
         # KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).enterRoomSeat(self, int(seat_id))
 
     def RequestRoomSeat(self):
-        #seated = KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.seated
-        #INFO_MSG("room:")
-        #INFO_MSG(str(self.roomKey))
-        #if seated is None:
-            #INFO_MSG("seated is None")
         seated = [0,0,0,0]    
         INFO_MSG("avaliable seats")
         INFO_MSG(seated)
