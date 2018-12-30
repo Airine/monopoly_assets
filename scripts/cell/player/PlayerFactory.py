@@ -2,7 +2,7 @@ from player.CsPlayer import CsPlayer
 from player.EePlayer import EePlayer
 from player.FnPlayer import FnPlayer
 from player.MaPlayer import MaPlayer
-
+from player.Player import Player
 
 class PlayerFactory:
     """玩家工厂，输入type制造不同的人物"""
@@ -11,13 +11,13 @@ class PlayerFactory:
     def create_player(player_id, room_id, name, seat, player_type):
         player = None
         if player_type == 0:
-            player = FnPlayer(player_id, room_id, name, seat)
+            player = Player(player_id, room_id, name, seat, 'CS')
         elif player_type == 1:
-            player = CsPlayer(player_id, room_id, name, seat)
+            player = Player(player_id, room_id, name, seat, 'EE')
         elif player_type == 2:
-            player = EePlayer(player_id, room_id, name, seat)
+            player = EePlayer(player_id, room_id, name, seat, 'FN')
         elif player_type == 3:
-            player = MaPlayer(player_id, room_id, name, seat)
+            player = MaPlayer(player_id, room_id, name, seat, 'MA')
 
         return player
 
