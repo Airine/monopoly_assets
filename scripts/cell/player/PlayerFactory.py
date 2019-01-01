@@ -11,13 +11,13 @@ class PlayerFactory:
     def create_player(player_id, room_id, name, seat, player_type):
         player = None
         if player_type == 0:
-            player = Player(player_id, room_id, name, seat, 'CS')
+            player = CsPlayer(player_id, room_id, name, seat)
         elif player_type == 1:
-            player = Player(player_id, room_id, name, seat, 'EE')
+            player = EePlayer(player_id, room_id, name, seat)
         elif player_type == 2:
-            player = EePlayer(player_id, room_id, name, seat, 'FN')
+            player = FnPlayer(player_id, room_id, name, seat)
         elif player_type == 3:
-            player = MaPlayer(player_id, room_id, name, seat, 'MA')
+            player = MaPlayer(player_id, room_id, name, seat)
 
         return player
 
