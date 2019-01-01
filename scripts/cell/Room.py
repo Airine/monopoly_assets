@@ -232,11 +232,13 @@ class Room(KBEngine.Entity):
         INFO_MSG(abilitys)
         INFO_MSG(moneys)
         INFO_MSG(ranks)
-        self.game.seatInfo[0].entity.cell.update_infos(moneys[0], moneys[1], moneys[2], moneys[3], 
+        self.game.seatInfo[0].entity.cell.update_infos(int(moneys[0]), int(moneys[1]), int(moneys[2]), int(moneys[3]), 
                                                        abilitys[0], abilitys[1], abilitys[2], abilitys[3],
                                                        ranks[0], ranks[1], ranks[2], ranks[3])
     def move_player(self, dest):
         self.site_list[16].move_player(dest)
+        if self.site_list[dest] is not None:
+            self.site_list[dest].enter_site(self.game.seatInfo[self.game.curr_player_id])
 
     def immute(self):
         self.site_list[20].escape()

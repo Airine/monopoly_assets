@@ -29,7 +29,7 @@ class GameRoom(Site, Building):
         if self.curr_player.player_id == self.owner.player_id:  # 如果是主人，什么事都没有
             self.curr_is_owner = True
         else:
-            if self.curr_player.character.cardpackage.is_hava_immunity():
+            if self.curr_player.card_package.is_have_immunity():
                 # (需要付的钱，减少的学力点，是否有免疫卡)
                 self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 0, curr_pos)
             else:

@@ -142,7 +142,22 @@
     <check_answer>
       <Arg>UINT8</Arg>
     </check_answer>
-    
+
+    <player_study>
+      <Arg>INT32 </Arg>
+    </player_study>
+
+    <player_use_xiuxian_card_study>
+      <Arg>INT32 </Arg>
+    </player_use_xiuxian_card_study>
+
+    <play_game>
+      <Arg>INT32 </Arg>
+    </play_game>
+
+    <player_use_card>
+      <Arg>INT32 </Arg>
+    </player_use_card>
     
   </CellMethods>
 
