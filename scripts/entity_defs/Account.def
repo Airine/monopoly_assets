@@ -238,6 +238,8 @@
       <Arg> UINT8 </Arg>
       <Arg>		BOOL		</Arg>
       <Arg> UINT8 </Arg>
+      <Arg> INT32 </Arg>
+
     </showEnterStudy>
 
     <otherEnterStudy>
@@ -245,6 +247,8 @@
       <Arg> UINT8 </Arg>
       <Arg>		BOOL		</Arg>
       <Arg> UINT8 </Arg>
+      <Arg> INT32 </Arg>
+
     </otherEnterStudy>
 
     <!-- GameRoom -->
@@ -252,12 +256,14 @@
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
+      <Arg> INT32 </Arg>
     </showEnterGame>
 
     <otherEnterGame>
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
+      <Arg> INT32 </Arg>
     </otherEnterGame>
 
     <!-- Supply -->
@@ -416,6 +422,26 @@
       <Exposed/>
     </Quiz>
 
+    <Study>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </Study>
+
+    <StudyX>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </StudyX>
+
+    <Game>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </Game>
+
+      <GameX>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </GameX>
+
   </BaseMethods>
 
 	<CellMethods>
@@ -493,6 +519,7 @@
       <Arg> UINT32 </Arg>
       <Arg> UINT32 </Arg>
       <Arg> UINT8 </Arg>
+      <Arg> INT32 </Arg>
     </show_enter_game>
 
     <show_weather_to_buy>
@@ -539,6 +566,8 @@
       <Arg> UINT8 </Arg>
       <Arg>		BOOL		</Arg>
       <Arg> UINT8 </Arg>
+      <Arg> INT32 </Arg>
+
     </show_enter_study>
 
     <!-- Supply -->

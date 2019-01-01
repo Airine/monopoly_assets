@@ -25,28 +25,27 @@ class GameRoom(Site, Building):
     def site_event(self):
         """ 付钱或者扣学力点 """
         # 计算玩家需要付的钱, 如果主人是金融系的是要加钱的
-        self.room.cell.next()
-        return
+        curr_pos = self.curr_player.position
         if self.curr_player.player_id == self.owner.player_id:  # 如果是主人，什么事都没有
             self.curr_is_owner = True
         else:
             if self.curr_player.character.cardpackage.is_hava_immunity():
                 # (需要付的钱，减少的学力点，是否有免疫卡)
-                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 0)
+                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 0, curr_pos)
             else:
                 # 没有免疫卡
-                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 1)
+                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 1, curr_pos)
 
     def play_game(self):
         # 没卡直接付钱
         self.curr_player.player_pay(self.game_pay)
         self.owner.earn_money(self.game_pay)
-        self.try_to_buy()
+        # self.try_to_buy()
 
     def player_use_card(self):
         """使用免疫卡"""
         self.curr_player.cardpackage.remove_immunity()
-        self.try_to_buy()
+        # self.try_to_buy()
 
     def try_to_buy(self):
         """ 如果当前玩家有交易卡，且不是主人，尝试去购买此建筑 """

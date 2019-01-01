@@ -96,10 +96,10 @@ class Account(KBEngine.Entity):
             self.otherClients.otherRandomEvent(num)
 
     #GameRoom
-    def show_enter_game(self,game_pay,level, type):
+    def show_enter_game(self,game_pay,level, type, curr_pos):
         if self.client:
-            self.client.showEnterGame(game_pay,level, type)
-            self.allClient.otherEnterGame(game_pay,level, type)
+            self.client.showEnterGame(game_pay,level, type, curr_pos)
+            self.allClient.otherEnterGame(game_pay,level, type, curr_pos)
 
     def show_weather_to_buy(self,owner,price):
         if self.client:
@@ -143,10 +143,10 @@ class Account(KBEngine.Entity):
     # Stadium
 
     # StudyRoom
-    def show_enter_study(self,a, b, c_bool,level):
+    def show_enter_study(self,a, b, c_bool,level, curr_pos):
         if self.client:
-            self.client.showEnterStudy(a, b, c_bool,level)
-            self.otherClients.otherEnterStudy(a, b, c_bool, level)
+            self.client.showEnterStudy(a, b, c_bool,level, curr_pos)
+            self.otherClients.otherEnterStudy(a, b, c_bool, level, curr_pos)
 
     # Supply
     def select_building(self):

@@ -188,3 +188,15 @@ class Account(KBEngine.Proxy):
     # Building One
     def Quiz(self, num):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.check_answer(num)
+    
+    def Study(self, curr_pos):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.player_study(curr_pos)
+
+    def StudyX(self, curr_pos):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.player_use_xiuxian_card_study(curr_pos)
+
+    def Game(self, curr_pos):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.play_game(curr_pos)
+
+    def GameX(self, curr_pos):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.player_use_card(curr_pos)

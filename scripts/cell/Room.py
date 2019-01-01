@@ -255,7 +255,18 @@ class Room(KBEngine.Entity):
 
     def check_answer(self, num):
         self.site_list[6].check_answer(num)
+
+    def player_study(self, curr_pos):
+        self.site_list[curr_pos].player_study()
     
+    def player_use_xiuxian_card_study(self, curr_pos):
+        self.site_list[curr_pos].player_use_xiuxian_card_study()
+
+    def play_game(self, curr_pos):
+        self.site_list[curr_pos].play_game()
+    
+    def player_use_card(self, curr_pos):
+        self.site_list[curr_pos].player_use_card()
 # --------------------------------------------------------------------------------------------
 #                              Callbacks
 # --------------------------------------------------------------------------------------------

@@ -28,22 +28,23 @@ class StudyRoom(Site, Building):
 
     def site_event(self):
         """ 询问是否要进入自习室学习 """
+        curr_pos = self.curr_player.position
         if self.curr_player.card_package.is_have_book():
             if self.curr_player.player_id == self.owner.player_id:  # 如果是自习室主人
                 INFO_MSG("主人学习")
                 self.curr_is_owner = True
                 if self.curr_player.card_package.is_have_xiuxian:
                     # 需求（价钱，书籍数量, 是否有修仙卡, 可以获得的学力点）
-                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, True, self.level)
+                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, True, self.level, curr_pos)
                 else:
-                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, False,self.level)
+                    self.curr_player.seat.entity.cell.show_enter_study(0, 1, False,self.level, curr_pos)
             else:
                 INFO_MSG("别人学习")
                 if self.curr_player.card_package.is_have_xiuxian:
                     # 需求（价钱，书籍数量, 是否有修仙卡）
-                    self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, True, self.level)
+                    self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, True, self.level, curr_pos)
                 else:
-                    self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, False, self.level)
+                    self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, False, self.level, curr_pos)
         else:
             self.curr_player.seat.entity.Next()
 
