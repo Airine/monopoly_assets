@@ -8,10 +8,10 @@ import random
 """
 
 
-class BuildingOne(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class BuildingOne(Site):
+
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
         self.quiz_num = 0
         self.quiz_answer = 0
 

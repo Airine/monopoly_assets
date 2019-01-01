@@ -7,10 +7,9 @@ from interfaces.Site import Site
 price = {'Immunity': 200, 'Transaction': 100, 'Xiuxian': 100, 'book': 50}
 
 
-class Lychee(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class Lychee(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
 
     def site_event(self):
         """ 卖东西 """

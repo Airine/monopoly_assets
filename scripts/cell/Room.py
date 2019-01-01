@@ -2,6 +2,17 @@ import random
 import time
 from player.CsPlayer import CsPlayer
 from player.PlayerFactory import PlayerFactory
+from AdminBuilding import AdminBuilding
+from Library import Library
+from BuildingOne import BuildingOne
+from Canteen import Canteen
+from Lakeside import Lakeside
+from Lychee import Lychee
+from Supply import Supply
+from BusStation import BusStation
+from Stadium import Stadium
+from Hospital import Hospital
+from Hotel import Hotel
 from KBEDebug import *
 
 MAIN_TIMER = 1
@@ -18,12 +29,33 @@ class Room(KBEngine.Entity):
         # self.room_master = self.EnterPlayerList[0]
         # self.clearPublicRoomInfo()
         self.game = GameController(self.roomInfo, self.playerMaxCount)
-        self.site_list = list()
-        self.seated = [0,0,0,0]
+        self.site_list = [None]*24
         self.loop = 25
+        self._create_site()
 
-    def pass_site(self, site_list):
-       self.site_list = site_list
+    def _create_site(self):
+        site_id = 0
+        self.site_list[site_id] = AdminBuilding(site_id, self)
+        site_id = 3
+        self.site_list[site_id] = Library(site_id, self)
+        site_id = 6
+        self.site_list[site_id] = BuildingOne(site_id, self)
+        site_id = 8
+        self.site_list[site_id] = Canteen(site_id, self)
+        site_id = 10
+        self.site_list[site_id] = Lakeside(site_id, self)
+        site_id = 12
+        self.site_list[site_id] = Lychee(site_id, self)
+        site_id = 14
+        self.site_list[site_id] = Supply(site_id, self)
+        site_id = 16
+        self.site_list[site_id] = BusStation(site_id, self)
+        site_id = 18
+        self.site_list[site_id] = Stadium(site_id, self)
+        site_id = 20
+        self.site_list[site_id] = Hospital(site_id, self)
+        site_id = 22
+        self.site_list[site_id] = Hotel(site_id, self)
 
     # TODO: 重写enterRoom
     def enterRoom(self, EntityCall):
@@ -108,7 +140,7 @@ class Room(KBEngine.Entity):
         self.game.seatInfo[0].entity.cell.start_game()
         self.timer_id = self.one_timer()
         for seat in self.roomInfo.seats:
-            self.site_list[0].cell.enter_site(seat)
+            self.site_list[0].enter_site(seat)
         self._get_infos()
 
     def one_timer(self):
@@ -144,8 +176,8 @@ class Room(KBEngine.Entity):
         INFO_MSG("seat_id")
         INFO_MSG(seat.userId)
         INFO_MSG(self.game.curr_player_id)
-        #if self.site_list[curr_pos] is not None:
-        #    # self.site_list[curr_pos].cell.leave_site(self.game.curr_player_id)
+        if self.site_list[curr_pos] is not None:
+            self.site_list[curr_pos].leave_site(self.game.curr_player_id)
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
             steps = 8
@@ -162,8 +194,8 @@ class Room(KBEngine.Entity):
             if curr_pos == 6:
                 self.next()
                 return
-            site.cell.enter_site(seat)
-            site.cell.site_event()
+            site.enter_site(seat)
+            site.site_event()
 
     def next(self):
         self._get_infos()

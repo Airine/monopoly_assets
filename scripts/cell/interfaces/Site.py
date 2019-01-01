@@ -9,9 +9,11 @@ from KBEDebug import *
 
 class Site(object):
 
-    def __init__(self):
+    def __init__(self, location, room):
         self.enter_player_list = list()
         self.curr_player = None
+        self.location = location
+        self.room = None
 
     def enter_site(self, seat):
         """ 进入站点 """

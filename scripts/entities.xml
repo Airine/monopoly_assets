@@ -10,20 +10,5 @@
 	<CheckName/>
 	<Halls/>
 	<Room hasClient="true"></Room>
-  <!--<Site hasClient="true"></Site>-->
-  <!--<Building hasClient="true"></Building>-->
-  <BusStation hasClient="true"></BusStation>
-  <AdminBuilding hasClient="true"></AdminBuilding>
-  <BuildingOne hasClient="true"></BuildingOne>
-  <Canteen hasClient="true"></Canteen>
-  <GameRoom hasClient="true"></GameRoom>
-  <Hospital hasClient="true"></Hospital>
-  <Hotel hasClient="true"></Hotel>
-  <Lakeside hasClient="true"></Lakeside>
-  <Library hasClient="true"></Library>
-  <Lychee hasClient="true"></Lychee>
-  <Stadium hasClient="true"></Stadium>
-  <StudyRoom hasClient="true"></StudyRoom>
-  <Supply hasClient="true"></Supply>
 
 </root>

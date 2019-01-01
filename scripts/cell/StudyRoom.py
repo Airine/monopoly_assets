@@ -8,11 +8,13 @@ from interfaces.Building import Building
 """
 
 
-class StudyRoom(KBEngine.Entity, Site, Building):
-    def __init__(self):
-        """ 根据角色level 决定可以加多少学力点 """
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class StudyRoom(Site, Building):
+    def __init__(self, location, room):
+        """ 根据角色level 决定可以加多少学力点
+        :param room:
+        """
+        Site.__init__(self, location, room)
+        Building.__init__(self)
 
     def update_viable(self):
         """判断是否可以升级"""

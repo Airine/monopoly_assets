@@ -7,10 +7,10 @@ from interfaces.Building import Building
 """
 
 
-class GameRoom(KBEngine.Entity, Site, Building):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class GameRoom(Site, Building):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
+        Building.__init__(self)
 
     def update_viable(self):
         """判断是否可以升级"""

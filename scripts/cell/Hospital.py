@@ -7,10 +7,9 @@ from interfaces.Site import Site
 """
 
 
-class Hospital(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class Hospital(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
 
     def site_event(self):
         """ 玩家休息两天 """

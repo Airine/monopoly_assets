@@ -6,10 +6,9 @@ from interfaces.Site import Site
 """
 
 
-class BusStation(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class BusStation(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
 
     def site_event(self):
         """ 调用客户端移动提示选择要移动到哪个位置 """

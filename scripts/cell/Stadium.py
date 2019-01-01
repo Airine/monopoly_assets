@@ -7,10 +7,9 @@ import random
 """
 
 
-class Stadium(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class Stadium(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
 
     def site_event(self):
         """ 随机事件区 """

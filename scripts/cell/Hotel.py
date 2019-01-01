@@ -9,10 +9,9 @@ import random
 """
 
 
-class Hotel(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class Hotel(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
 
     def site_event(self):
         """ 专家公寓发生事件"""

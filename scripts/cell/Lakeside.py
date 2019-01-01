@@ -6,10 +6,9 @@ import random
 """
 
 
-class Lakeside(KBEngine.Entity, Site):
-    def __init__(self):
-        KBEngine.Entity.__init__(self)
-        Site.__init__(self)
+class Lakeside(Site):
+    def __init__(self, location, room):
+        Site.__init__(self, location, room)
         self.select_num = 0
 
     def site_event(self):

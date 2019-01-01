@@ -154,34 +154,35 @@ class Account(KBEngine.Proxy):
     # Create Study or Game room
     def createStudyRoom(self, curr_pos):
         room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
-        room.create_study_room(self, curr_pos)
-        room.cell.pass_site(room.site_list)
+        # room.create_study_room(self, curr_pos)
+        # room.cell.pass_site(room.site_list)
+        # room.cell.createStudyRoom(curr_pos)
         self.cell.on_create_study_room(curr_pos)
 
     def createGameRoom(self, curr_pos):
         room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
-        room.create_study_room(self, curr_pos)
-        room.cell.pass_site(room.site_list)
-        self.cell.on_create_study_room(curr_pos)
+        # room.create_study_room(self, curr_pos)
+        # room.cell.pass_site(room.site_list)
+        self.cell.on_create_game_room(curr_pos)
     
     # Hosipital
     def Immute(self):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.escape()
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].escape()
 
     def StayHospital(self):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].cell.stay_hospital()
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].stay_hospital()
 
     # Lychee
     def BuyGoods(self, im, tra, xiu, boo):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[12].cell.buy_product(im, tra, xiu, boo)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[12].buy_product(im, tra, xiu, boo)
 
     # Bus Station
     def MoveTo(self, dest):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].cell.move_player(dest)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].move_player(dest)
 
-    # teaching
+    # Teaching
     def Teach(self, num):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[6].cell.select_event_callback(num)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[6].select_event_callback(num)
 
     def Lake(self, num):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[10].cell.select_event_callback(num)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[10].select_event_callback(num)
