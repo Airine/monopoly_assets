@@ -4,7 +4,7 @@ from interfaces.Site import Site
 当前问题
 """
 
-price = {'Immunity': 200, 'Transaction': 100, 'Xiuxian': 100, 'book': 50}
+price = {'Immunity': 200, 'Transaction': 100, 'Xiuxian': 100, 'Book': 50}
 
 
 class Lychee(Site):

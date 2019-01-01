@@ -187,3 +187,7 @@ class Account(KBEngine.Proxy):
 
     def Lake(self, num):
         KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.lake_select(num)
+
+    # Building One
+    def Quiz(self, num):
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.check_answer(num)

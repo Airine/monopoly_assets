@@ -130,8 +130,10 @@
     <lake_select>
       <Arg>UINT8</Arg>
     </lake_select>
-    
-    
+
+    <check_answer>
+      <Arg>UINT8</Arg>
+    </check_answer>
   </CellMethods>
 
 </root>

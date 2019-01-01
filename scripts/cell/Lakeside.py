@@ -29,19 +29,19 @@ class Lakeside(Site):
             self.curr_player.personality.add_art_point(1)
             self.curr_player.seat.entity.cell.random_event(5)
         elif r <= 0.7:  # 骑滑板车被刘主任发现，跑/不跑
-            self.curr_player.seat.entity.cell.select_event(52)
+            self.curr_player.seat.entity.cell.select_event(51)
             self.select_num = 0
         elif r <= 0.8:  # 看见校长，上前打招呼/走开
-            self.curr_player.seat.entity.cell.select_event(53)
+            self.curr_player.seat.entity.cell.select_event(52)
             self.select_num = 1
         elif r <= 0.88:  # 活动室赶第二天的project，通宵做完美/赶紧随便做完睡觉
-            self.curr_player.seat.entity.cell.select_event(54)
+            self.curr_player.seat.entity.cell.select_event(53)
             self.select_num = 2
         elif r <= 0.95:  # 考试周，一个人复习/一群人复习
-            self.curr_player.seat.entity.cell.select_event(55)
+            self.curr_player.seat.entity.cell.select_event(54)
             self.select_num = 3
         elif r <= 1:  # 宿舍有点脏乱了，立即打扫/先等一等
-            self.curr_player.seat.entity.cell.select_event(56)
+            self.curr_player.seat.entity.cell.select_event(55)
             self.select_num = 4
 
     def select_event_callback(self, select):

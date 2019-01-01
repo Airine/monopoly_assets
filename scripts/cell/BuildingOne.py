@@ -24,7 +24,7 @@ class BuildingOne(Site):
             self.curr_player.seat.entity.cell.quiz(self.quiz_num)
         else:
             # 选择考试
-            self.curr_player.seat.entity.cell.select_event(57)
+            self.curr_player.seat.entity.cell.select_event(56)
 
     def select_event_callback(self, select):
         """ 客户端回调 """

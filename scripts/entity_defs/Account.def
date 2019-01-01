@@ -411,6 +411,11 @@
       <Exposed/>
     </Lake>
 
+    <Quiz>
+      <Arg> INT32 </Arg>
+      <Exposed/>
+    </Quiz>
+
   </BaseMethods>
 
 	<CellMethods>

@@ -20,7 +20,7 @@ class Supply(Site):
         指定建筑破坏，(或者升级)不能是site，只能是自习室或者游戏室
         :return:
         """
-        self.room.cell.next()
+        self.room.next()
         return
         self.curr_player.seat.entity.cell.select_building()
 

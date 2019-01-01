@@ -16,7 +16,6 @@ class Canteen(Site):
         r = random.random()
         INFO_MSG(self.curr_player)
         INFO_MSG(self.curr_player.money)
-        self.curr_player.earn_money(200)
         if r < 0.3:  # 吃到欣园食堂食物中毒，获得赔偿200块
             self.curr_player.earn_money(200)
             self.curr_player.seat.entity.cell.random_event(11)

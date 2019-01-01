@@ -180,7 +180,7 @@ class Room(KBEngine.Entity):
             self.site_list[curr_pos].leave_site(self.game.curr_player_id)
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
-            steps = 12
+            steps = 1
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)
@@ -191,9 +191,6 @@ class Room(KBEngine.Entity):
             seat.entity.cell.normal_choose(curr_pos)
             # self.next()
         else:
-            if curr_pos == 6:
-                self.next()
-                return
             site.enter_site(seat)
             site.site_event()
 
@@ -243,6 +240,9 @@ class Room(KBEngine.Entity):
 
     def lake_select(self, num):
         self.site_list[10].select_event_callback(num)
+
+    def check_answer(self, num):
+        self.site_list[6].check_answer(num)
     
 # --------------------------------------------------------------------------------------------
 #                              Callbacks
@@ -252,7 +252,7 @@ class Room(KBEngine.Entity):
         KBEngine method.
         引擎回调timer触发
         """
-        self.game.entity.cell.time_out()
+        self.game.seatInfo[self.game.curr_player_id].entity.cell.time_out()
         self.game.next_player()
         self.one_timer()
 
