@@ -135,7 +135,6 @@ class Halls(KBEngine.Entity):
                                           "roomKey": roomId,
                                           "RoomType": roomType,
                                           "EnterPlayerList": entityList,
-                                          "site_list": [None]*TOTAL_SITE,
                                           "playerMaxCount": ROOM_MAX_PLAYER
 
                                       },

@@ -15,12 +15,7 @@
       <Type>			ENTITY_LIST			</Type>
       <Flags>			BASE				</Flags>
     </EnterPlayerList>
-    
-    <site_list>
-      <Type>      ENTITY_LIST     </Type>
-      <Flags>     BASE        </Flags>
-    </site_list>
-    
+
 		<playerMaxCount>
 			<Type>			UINT8			</Type>
 			<Flags>			ALL_CLIENTS			</Flags>
@@ -111,6 +106,31 @@
     <shake></shake>
 
     <next></next>
+  
+    <!--站点-->
+    <move_player>
+      <Arg> INT32 </Arg>
+    </move_player>
+
+    <immute></immute>
+
+    <stay_hospital></stay_hospital>
+
+    <buy_product>
+      <Arg>INT32</Arg>
+      <Arg>INT32</Arg>
+      <Arg>INT32</Arg>
+      <Arg>INT32</Arg>
+    </buy_product>
+
+    <teach_select>
+      <Arg>UINT8</Arg>
+    </teach_select>
+
+    <lake_select>
+      <Arg>UINT8</Arg>
+    </lake_select>
+    
     
   </CellMethods>
 

@@ -167,22 +167,23 @@ class Account(KBEngine.Proxy):
     
     # Hosipital
     def Immute(self):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].escape()
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.immute()
 
     def StayHospital(self):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[20].stay_hospital()
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.stay_hospital()
 
     # Lychee
     def BuyGoods(self, im, tra, xiu, boo):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[12].buy_product(im, tra, xiu, boo)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.buy_product(im, tra, xiu, boo)
 
     # Bus Station
     def MoveTo(self, dest):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].move_player(dest)
+        # KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[16].move_player(dest)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.move_player(dest)
 
     # Teaching
     def Teach(self, num):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[6].select_event_callback(num)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.teach_select(num)
 
     def Lake(self, num):
-        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).site_list[10].select_event_callback(num)
+        KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).cell.lake_select(num)

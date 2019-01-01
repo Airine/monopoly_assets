@@ -180,7 +180,7 @@ class Room(KBEngine.Entity):
             self.site_list[curr_pos].leave_site(self.game.curr_player_id)
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
-            steps = 8
+            steps = 12
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)
@@ -226,18 +226,35 @@ class Room(KBEngine.Entity):
         self.game.seatInfo[0].entity.cell.update_infos(moneys[0], moneys[1], moneys[2], moneys[3], 
                                                        abilitys[0], abilitys[1], abilitys[2], abilitys[3],
                                                        ranks[0], ranks[1], ranks[2], ranks[3])
+    def move_player(self, dest):
+        self.site_list[16].move_player(dest)
 
+    def immute(self):
+        self.site_list[20].escape()
+
+    def stay_hospital(self):
+        self.site_list[20].stay_hospital()
+
+    def buy_product(self,im, tra, xiu, boo):
+        self.site_list[12].buy_product(im, tra, xiu, boo)
+
+    def teach_select(self, num):
+        self.site_list[6].select_event_callback(num)
+
+    def lake_select(self, num):
+        self.site_list[10].select_event_callback(num)
+    
 # --------------------------------------------------------------------------------------------
 #                              Callbacks
 # --------------------------------------------------------------------------------------------
-def onTimer(self, tid, userArg):
-    """
-    KBEngine method.
-    引擎回调timer触发
-    """
-    self.game.entity.cell.time_out()
-    self.game.next_player()
-    self.one_timer()
+    def onTimer(self, tid, userArg):
+        """
+        KBEngine method.
+        引擎回调timer触发
+        """
+        self.game.entity.cell.time_out()
+        self.game.next_player()
+        self.one_timer()
 
 
 class GameController:
