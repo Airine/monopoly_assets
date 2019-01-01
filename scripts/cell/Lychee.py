@@ -21,13 +21,13 @@ class Lychee(Site):
         if im > 0:
             self.curr_player.card_package.buy_immunity(im)
             self.curr_player.pay_money(im * price['Immunity'])
-        elif tra > 0:
+        if tra > 0:
             self.curr_player.card_package.buy_transaction(tra)
             self.curr_player.pay_money(tra * price['Transaction'])
-        elif xiu > 0:
+        if xiu > 0:
             self.curr_player.card_package.buy_xiuxian(xiu)
             self.curr_player.pay_money(xiu * price['Xiuxian'])
-        elif boo > 0:
+        if boo > 0:
             self.curr_player.card_package.buy_book(boo)
             self.curr_player.pay_money(boo * price['Book'])
         # 结束操作，下一位玩家
