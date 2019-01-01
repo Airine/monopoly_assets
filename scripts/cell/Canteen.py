@@ -25,6 +25,7 @@ class Canteen(Site):
             self.curr_player.seat.entity.cell.random_event(12)
             INFO_MSG("huo guo")
         elif r < 0.6:  # 在食堂排队错过上课，学力点扣1
+            self.curr_player.loss_ability(1)
             self.curr_player.seat.entity.cell.random_event(13)
             INFO_MSG("pai dui")
         elif r < 0.8:  # 受不了食堂点了外卖，金钱减100
