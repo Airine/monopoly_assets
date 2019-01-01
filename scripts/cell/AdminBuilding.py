@@ -13,10 +13,12 @@ class AdminBuilding(Site):
 
     def site_event(self):
         """ 经过正门的人发钱，踩到的翻倍 """
-        self.show_send_money(self.curr_player.money_per_round)
+        money = self.curr_player.get_scholarship(1)
+        self.show_send_money(2*money)
 
     def send_money(self):
-        """ 只是路过的人发正常金额的钱"""
+        """ 只是路过的人发正常金额的钱 """
+        money = self.curr_player.get_scholarship(1)
         self.show_send_money(self.curr_player.get_scholarship)
 
     # TODO: 这里调用好像有点问题
