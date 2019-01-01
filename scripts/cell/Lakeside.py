@@ -13,6 +13,9 @@ class Lakeside(Site):
 
     def site_event(self):
         """ 随机事件区 """
+        self.curr_player.seat.entity.cell.select_event(51)
+        self.select_num = 0
+        return
         r = random.random()
         if r <= 0.2:  # 丢失校卡，损失金钱
             self.curr_player.pay_money(100)
@@ -89,6 +92,9 @@ class Lakeside(Site):
 
     def run_away_fail(self):
         """ 跑失败"""
+        INFO_MSG('run away fail')
+        INFO_MSG(self.curr_player)
+        INFO_MSG(self.curr_player.personality)
         self.curr_player.personality.add_real_point(1)
         self.curr_player.pay_money(500)
         self.curr_player.add_administrative_warnning()

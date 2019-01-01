@@ -13,10 +13,13 @@ from BusStation import BusStation
 from Stadium import Stadium
 from Hospital import Hospital
 from Hotel import Hotel
+from StudyRoom import StudyRoom
+from GameRoom import GameRoom
+
 from KBEDebug import *
 
 MAIN_TIMER = 1
-ROOM_MAX_PLAYER = 1
+ROOM_MAX_PLAYER = 2
 
 
 class Room(KBEngine.Entity):
@@ -57,7 +60,16 @@ class Room(KBEngine.Entity):
         site_id = 22
         self.site_list[site_id] = Hotel(site_id, self)
 
-    # TODO: 重写enterRoom
+    def create_study_room(self, curr_pos):
+        self.site_list[curr_pos] = StudyRoom(curr_pos, self)
+        self.site_list[curr_pos].sell_site(None, self.game.seatInfo[self.game.curr_player_id].character)
+        self.site_list[curr_pos].enter_site(self.game.seatInfo[self.game.curr_player_id])
+    
+    def create_game_room(self, curr_pos):
+        self.site_list[curr_pos] = GameRoom(curr_pos, self)
+        self.site_list[curr_pos].sell_site(None, self.game.seatInfo[self.game.curr_player_id].character)
+        self.site_list[curr_pos].enter_site(self.game.seatInfo[self.game.curr_player_id])
+
     def enterRoom(self, EntityCall):
         for i in range(len(self.roomInfo.seats)):
             seat = self.roomInfo.seats[i];
@@ -180,7 +192,7 @@ class Room(KBEngine.Entity):
             self.site_list[curr_pos].leave_site(self.game.curr_player_id)
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
-            steps = 1
+            steps = 10
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)
@@ -313,7 +325,7 @@ class seat_roomInfo:
         self.seatIndex = seatIndex
 
     def create_player(self, room_id):
-        self.character = PlayerFactory.create_player(self.seatIndex, room_id, '唐博',self, 1)
+        self.character = PlayerFactory.create_player(self.seatIndex, room_id, '唐博',self, self.seatIndex)
 
 
 # 色子

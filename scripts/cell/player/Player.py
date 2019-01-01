@@ -1,5 +1,6 @@
 from player.CardPackage import *
 from player.Ending import form_ending
+from KBEDebug import *
 SUM_BUILDING_NUM = 24  # 几个格子
 GRADUATED_REQUIREMENT = [30, 50, 70, 90]  # 升级和毕业要求达到的学力点
 """
@@ -28,6 +29,7 @@ class Player:
         self.get_ability_rate = 1  # 获得学历点率
         self.money_per_round = 1000  # 每回合发的钱数
         self.personality = Personality()  # 性格点
+        INFO_MSG(self.personality)
 
     def graduate_grade(self):
         """ 升年级，或者毕业 """

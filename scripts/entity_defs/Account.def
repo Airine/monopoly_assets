@@ -419,6 +419,8 @@
   </BaseMethods>
 
 	<CellMethods>
+
+    <time_out></time_out>
     
     <shake_notify>
       <Arg> UINT8 </Arg>

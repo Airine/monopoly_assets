@@ -28,8 +28,6 @@ class StudyRoom(Site, Building):
 
     def site_event(self):
         """ 询问是否要进入自习室学习 """
-        self.room.cell.next()
-        return
         if self.curr_player.card_package.is_have_book():
             if self.curr_player.player_id == self.owner.player_id:  # 如果是自习室主人
                 INFO_MSG("主人学习")
@@ -46,6 +44,8 @@ class StudyRoom(Site, Building):
                     self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, True, self.level)
                 else:
                     self.curr_player.seat.entity.cell.show_enter_study(self.study_pay, 1, False, self.level)
+        else:
+            self.curr_player.seat.entity.Next()
 
     def player_study(self):
         """ 不用卡学习 """
@@ -98,5 +98,4 @@ class StudyRoom(Site, Building):
         else:
             newer.buy_house(self.price, self)
         self.owner = newer
-        INFO_MSG("新的主人是{}".format(newer.player_id))
-        KBEngine.globalData["Halls"].getRoom(int(self.room_id)).next()
+        INFO_MSG("new owner{}".format(newer.player_id))

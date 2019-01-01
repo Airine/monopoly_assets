@@ -5,9 +5,9 @@ class Building(object):
     def __init__(self):
         # 初始建筑等级和价钱, 以及每个人需要付的钱
         self.level = 1
-        self.price = 50
-        self.game_pay = 500
-        self.study_pay = 100
+        self.price = 500
+        self.game_pay = 50
+        self.study_pay = 50
         self.owner = None
         self.curr_is_owner = False
 

@@ -154,15 +154,12 @@ class Account(KBEngine.Proxy):
     # Create Study or Game room
     def createStudyRoom(self, curr_pos):
         room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
-        # room.create_study_room(self, curr_pos)
-        # room.cell.pass_site(room.site_list)
-        # room.cell.createStudyRoom(curr_pos)
+        room.cell.create_study_room(curr_pos)
         self.cell.on_create_study_room(curr_pos)
 
     def createGameRoom(self, curr_pos):
         room = KBEngine.globalData["Halls"].getRoom(int(self.roomKey))
-        # room.create_study_room(self, curr_pos)
-        # room.cell.pass_site(room.site_list)
+        room.cell.create_game_room(curr_pos)
         self.cell.on_create_game_room(curr_pos)
     
     # Hosipital
