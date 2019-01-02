@@ -7,6 +7,8 @@ MAIN_STATE_IDEL = 1
 MAIN_STATE_MATCH = 2
 MAIN_STATE_INGAME = 3
 
+ROOM_MAX_PLAYER = 2
+
 class Account(KBEngine.Proxy):
     def __init__(self):
         KBEngine.Proxy.__init__(self)
@@ -145,7 +147,10 @@ class Account(KBEngine.Proxy):
         # KBEngine.globalData["Halls"].getRoom(int(self.roomKey)).enterRoomSeat(self, int(seat_id))
 
     def RequestRoomSeat(self):
-        seated = [0,0,0,0]    
+        seated = [1,1,1,1]
+        for i in range(4):
+            if i < ROOM_MAX_PLAYER:
+                seated[i] = 0
         INFO_MSG("avaliable seats")
         INFO_MSG(seated)
         if self.client:
