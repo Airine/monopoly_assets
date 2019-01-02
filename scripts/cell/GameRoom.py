@@ -26,25 +26,35 @@ class GameRoom(Site, Building):
         """ 付钱或者扣学力点 """
         # 计算玩家需要付的钱, 如果主人是金融系的是要加钱的
         curr_pos = self.curr_player.position
+        INFO_MSG('Game Room')
+        INFO_MSG(self.curr_player.player_id)
+        INFO_MSG(self.owner.player_id)
         if self.curr_player.player_id == self.owner.player_id:  # 如果是主人，什么事都没有
             self.curr_is_owner = True
+            self.curr_player.seat.entity.Next()
         else:
             if self.curr_player.card_package.is_have_immunity():
                 # (需要付的钱，减少的学力点，是否有免疫卡)
-                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 0, curr_pos)
+                self.curr_player.seat.entity.cell.show_enter_game(self.game_pay, self.level, 0, curr_pos)
             else:
                 # 没有免疫卡
-                self.curr_player.seat.entity.show_enter_game(self.game_pay, self.level, 1, curr_pos)
+                self.curr_player.seat.entity.cell.show_enter_game(self.game_pay, self.level, 1, curr_pos)
 
     def play_game(self):
         # 没卡直接付钱
-        self.curr_player.player_pay(self.game_pay)
+        INFO_MSG('Play Game')
+        INFO_MSG(self.curr_player.money)
+        INFO_MSG(self.curr_player.ability)
+        self.curr_player.pay_money(self.game_pay)
         self.owner.earn_money(self.game_pay)
+        self.curr_player.loss_ability(self.level)
+        INFO_MSG(self.curr_player.money)
+        INFO_MSG(self.curr_player.ability)
         # self.try_to_buy()
 
     def player_use_card(self):
         """使用免疫卡"""
-        self.curr_player.cardpackage.remove_immunity()
+        self.curr_player.card_package.remove_immunity()
         # self.try_to_buy()
 
     def try_to_buy(self):
@@ -58,7 +68,7 @@ class GameRoom(Site, Building):
     def sell_site(self, older, newer):
         """ 卖房子(玩家第一次建筑的时候也调用)"""
         if older is not None:  # 不是第一次购买
-            newer.cardpackage.remove_transaction()
+            newer.card_package.remove_transaction()
             # 玩家收钱比率
             self.game_pay /= older.earn_money_rate
             self.study_pay /= older.earn_money_rate

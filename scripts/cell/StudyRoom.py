@@ -71,6 +71,7 @@ class StudyRoom(Site, Building):
 
     def try_to_buy(self):
         """ 如果当前玩家有交易卡，且不是主人，尝试去购买此建筑 """
+
         if self.curr_player.card_package.is_have_transaction() and not self.curr_is_owner:
             self.curr_player.seat.entity.cell.show_weather_to_buy(self.owner, 'StudyRoom')
         else:
@@ -88,7 +89,7 @@ class StudyRoom(Site, Building):
     def sell_site(self, older, newer):
         """ 卖房子(玩家第一次建筑的时候也调用)"""
         if older is not None:  # 不是第一次购买
-            newer.cardpackage.remove_transaction()
+            newer.card_package.remove_transaction()
             # 玩家收钱比率
             self.game_pay /= older.earn_money_rate
             self.study_pay /= older.earn_money_rate

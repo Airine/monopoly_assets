@@ -31,12 +31,7 @@
 			<Flags>			ALL_CLIENTS			</Flags>
 		</cur_turn>
 
-    <seated>
-      <Type> PYTHON</Type>
-      <Flags> CELL_PRIVATE</Flags>
-    </seated>
     
-		
 	</Properties>
 
 	<ClientMethods>		

@@ -14,7 +14,7 @@ class Building(object):
     def sell_site(self, older, newer):
         """ 卖房子"""
         if older is not None:  # 不是第一次购买
-            newer.cardpackage.remove_transaction()
+            newer.card_package.remove_transaction()
             # 玩家收钱比率
             self.game_pay /= older.earn_money_rate
             self.study_pay /= older.earn_money_rate

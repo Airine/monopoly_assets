@@ -61,8 +61,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/AdminBuilding.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
-              <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+            <state relative-caret-position="135">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
@@ -140,7 +140,6 @@
       <list>
         <option value="$PROJECT_DIR$/interfaces/Site.py" />
         <option value="$PROJECT_DIR$/GameRoom.py" />
-        <option value="$PROJECT_DIR$/AdminBuilding.py" />
         <option value="$PROJECT_DIR$/BuildingOne.py" />
         <option value="$PROJECT_DIR$/BusStation.py" />
         <option value="$PROJECT_DIR$/Canteen.py" />
@@ -152,10 +151,11 @@
         <option value="$PROJECT_DIR$/Stadium.py" />
         <option value="$PROJECT_DIR$/StudyRoom.py" />
         <option value="$PROJECT_DIR$/Supply.py" />
+        <option value="$PROJECT_DIR$/AdminBuilding.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="246" />
     <option name="y" value="-14" />
     <option name="width" value="1400" />
@@ -212,11 +212,11 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="246" y="-14" width="1400" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2496329" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
@@ -379,8 +379,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/AdminBuilding.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        <state relative-caret-position="135">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>

@@ -3,7 +3,7 @@ from interfaces.Site import Site
 
 """
 当前问题
-怎么判断是路过还是踩到，避免重复发放
+怎么判断是路过还是踩到，避免重 复发放
 """
 
 
