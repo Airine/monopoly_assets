@@ -193,8 +193,6 @@ class Room(KBEngine.Entity):
         steps = d1 + d2
         if ROOM_MAX_PLAYER == 1:
             steps = 10
-        if ROOM_MAX_PLAYER == 2:
-            steps = 1
         #if self.game.curr_player_id == 0:
         #    steps = 16
         seat.character.change_position(steps)

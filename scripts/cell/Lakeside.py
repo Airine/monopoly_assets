@@ -79,23 +79,26 @@ class Lakeside(Site):
 
     def say_hello_to_schoolmaster(self):
         """ 遇见校长打招呼 """
-        self.curr_player.personality.add_social_point(1)
+        # self.curr_player.personality.add_social_point(1)
+        pass
 
     def not_say_hello_to_schoolmaster(self):
         """ 遇见校长不打招呼"""
-        self.curr_player.personality.sub_real_point(1)
-        self.curr_player.personality.add_social_point(2)
+        pass
+        # self.curr_player.personality.sub_real_point(1)
+        # self.curr_player.personality.add_social_point(2)pass
 
     def run_away(self):
         """ 骑滑板车跑 """
-        self.curr_player.personality.add_real_point(1)
+        #self.curr_player.personality.add_real_point(1)
+        pass
 
     def run_away_fail(self):
         """ 跑失败"""
         INFO_MSG('run away fail')
         INFO_MSG(self.curr_player)
-        INFO_MSG(self.curr_player.personality)
-        self.curr_player.personality.add_real_point(1)
+        #INFO_MSG(self.curr_player.personality)
+        #self.curr_player.personality.add_real_point(1)
         self.curr_player.pay_money(500)
         self.curr_player.add_administrative_warnning()
 
