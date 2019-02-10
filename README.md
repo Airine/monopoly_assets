@@ -1,5 +1,4 @@
 南科大富翁 SUSTech Monopoly
-
 ===
 
 #### Final project of OOAD CS309
@@ -45,7 +44,7 @@ After creating or joining a room, the player is asked to choose a character.
 
 Characters already be chosen would be unable to choose for next player.
 
-![](resource/图片 1.png)
+![](resource/1.png)
 
 ## Event System
 
@@ -53,7 +52,7 @@ Characters already be chosen would be unable to choose for next player.
 
 ### Quiz
 
-![](resource/图片 2.png)
+![](resource/2.png)
 
 ## Ending
 
@@ -63,4 +62,4 @@ Normally, the rank and wealth a player got would be shown in the end.
 
 Cause we have event system, we would generate special endings for every player according to the desisions they made for each event.
 
-![](resource/图片 3.png)
+![](resource/3.png)
